@@ -1,9 +1,7 @@
-"use client"
-
 import { reducerCases } from "./constants";
 
 export const initialState = {
-  userInfo: undefined,
+  userInfo: null,
 };
 
 const reducer = (state, action) => {
