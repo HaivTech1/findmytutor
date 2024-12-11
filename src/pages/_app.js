@@ -14,7 +14,6 @@ export default function App({
 }) {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-      <SessionProvider session={session}>
         <Head>
           <meta charSet="utf-8" />
           <meta
@@ -26,7 +25,6 @@ export default function App({
 
         <Component {...pageProps} />
         <CustomToast />
-      </SessionProvider>
     </StateProvider>
   );
 }

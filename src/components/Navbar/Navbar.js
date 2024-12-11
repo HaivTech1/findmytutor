@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
-import { MdLogin, MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { MdLogin } from "react-icons/md";
 
 import logo from "../../../assets/logo.jpg";
 import LanguageCurrency from "../Modals/LanguageCurrency";
@@ -19,10 +19,6 @@ const Navbar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const router = useRouter();
-  const navigateToLogin = () => {
-    router.push("/login");
-  };
   return (
     <div className="bg-white relative border-b-2 shadow-md">
       <div className="w-[94%] lg:w-[95%] mx-auto flex justify-between items-center">
@@ -53,16 +49,15 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center justify-between space-x-12">
           <div className="flex items-center gap-5">
             <AiOutlineQuestionCircle className="text-xl" />
-            <button
-              onClick={navigateToLogin}
+            <Link
+              href="/login"
               className="border-2 border-black px-4 py-2 rounded-md flex items-center gap-2"
             >
               <span className="">
-                {" "}
                 <MdLogin className="" />
-              </span>{" "}
+              </span>
               Log In
-            </button>
+            </Link>
           </div>
         </div>
 

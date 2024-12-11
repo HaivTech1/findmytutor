@@ -19,10 +19,10 @@ import google from "../../assets/googles.svg";
 
 const Login = () => {
 
-  const {  } = UseAuth({
-    middleware: "guest",
-    redirectIfAuthenticated: "/",
-  });
+  // const {  } = UseAuth({
+  //   middleware: "guest",
+  //   redirectIfAuthenticated: "/",
+  // });
 
   const router = useRouter();
   const [{}, dispatch] = useStateProvider();
