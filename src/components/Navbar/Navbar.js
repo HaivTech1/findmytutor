@@ -19,6 +19,10 @@ const Navbar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const router = useRouter();
+  const navigateToLogin = () => {
+    router.push("/login");
+  };
   return (
     <div className="bg-white relative border-b-2 shadow-md">
       <div className="w-[94%] lg:w-[95%] mx-auto flex justify-between items-center">
@@ -49,15 +53,16 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center justify-between space-x-12">
           <div className="flex items-center gap-5">
             <AiOutlineQuestionCircle className="text-xl" />
-            <Link
-              href="/login"
+            <button
+              onClick={navigateToLogin}
               className="border-2 border-black px-4 py-2 rounded-md flex items-center gap-2"
             >
               <span className="">
+                {" "}
                 <MdLogin className="" />
-              </span>
+              </span>{" "}
               Log In
-            </Link>
+            </button>
           </div>
         </div>
 

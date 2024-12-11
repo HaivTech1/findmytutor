@@ -1,3 +1,5 @@
+import cookie from "cookie";
+import Cookies from "js-cookie";
 
 export const sendError = (error) => {
   if (error?.response?.data) {
@@ -5,7 +7,6 @@ export const sendError = (error) => {
   }
   return { status: false, error: error.message };
 };
-
 
 export const isLoggedIn = (reqCookies = null) => {
   if (!reqCookies) {

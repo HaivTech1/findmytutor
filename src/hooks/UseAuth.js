@@ -1,18 +1,55 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useCookies } from "react-cookie";
+import useSWR from "swr";
 
-import { isEmailVerified, isLoggedIn } from "./helpers";
+import Client from "@/context/Client";
+import { reducerCases } from "@/context/constants";
+import { useStateProvider } from "@/context/StateContext";
+import { isEmailVerified, isLoggedIn, sendError } from "./helpers";
 
 export const UseAuth = ({
   middleware = "",
   redirectIfAuthenticated = "/",
 } = {}) => {
+
   const router = useRouter();
+  const [{}, dispatch] = useStateProvider();
+  const [cookie, setCookie] = useCookies(["is_verified"]);
+
+   const fetchUserInfo = async () => {
+     try {
+       const res = await Client().get("/user");
+       const userData = res?.data?.data;
+
+       dispatch({ type: reducerCases.SET_USER_INFO, userInfo: userData });
+
+       setCookie("is_verified", userData?.is_verified, {
+         path: "/",
+         sameSite: true,
+       });
+
+       return userData;
+     } catch (error) {
+       console.log(sendError(error));
+       throw error;
+     }
+   };
+
+   const { data: user, error } = useSWR(
+     isLoggedIn() ? "/user" : null,
+     fetchUserInfo
+   );
+
 
   useEffect(() => {
+
     if (!middleware) return;
 
     const handleAuth = () => {
+      console.log("called");
+      console.log(isLoggedIn());
+      
       switch (middleware) {
         case "guest":
           if (redirectIfAuthenticated && isLoggedIn()) {
@@ -49,9 +86,6 @@ export const UseAuth = ({
     };
 
     handleAuth();
-  }, [middleware, redirectIfAuthenticated, router]);
+  }, [middleware, redirectIfAuthenticated]);
 
-   return {
-    
-   };
 };

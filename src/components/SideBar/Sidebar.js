@@ -22,13 +22,13 @@ const Sidebar = ({ toggleSidebar }) => {
           </div>
         </div>
         <div className="flex flex-col items-start px-3 py-4 gap-8 font-semibold">
-          <Link href="/findMyTutor" className="text-primary">
+          <Link href="/tutors" className="text-primary">
             Find tutors
           </Link>
           <Link href="/contact" className="text-primary">
             Contact Us
           </Link>
-          <Link href="/" className="text-primary">
+          <Link href="/login" className="text-primary">
             Become a tutor
           </Link>
         </div>

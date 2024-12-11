@@ -8,7 +8,7 @@ const siteSettings = {
   currency: "₦",
   language: "en-us",
   theme: "system", // system, dark or light
-  siteLogoWhite: "/logo.png",
+  siteLogoWhite: "/assets/logo.jpg",
   siteLogoColor: "/logocolor.png",
   image: "/logo.png",
   email: "noreply@findmytutor.haivtech.com.ng",

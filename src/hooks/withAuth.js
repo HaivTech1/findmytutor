@@ -1,10 +1,7 @@
-import { useEffect } from "react";
-import toast from "react-hot-toast";
-
-import redirectTo from "@/utils/redirectTo";
-import { useStateProvider } from "./StateContext";
+import { useStateProvider } from "../context/StateContext";
 
 import { isEmailVerified, isLoggedIn } from "../hooks/helpers";
+import redirectTo from "../hooks/redirectTo";
 
 export default function withAuth(Component) {
   const AuthComponent = (props) => {

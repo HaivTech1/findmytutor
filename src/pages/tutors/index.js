@@ -3,8 +3,9 @@ import React from "react";
 import CardList from "@/components/LessonHero/CardList";
 import Filters from "@/components/LessonHero/Filters";
 import Mainlayout from "@/components/Mainlayout";
+import withAuth from "@/hooks/withAuth";
 
-const page = () => {
+const Index = () => {
   return (
     <Mainlayout>
       <div className="bg-white min-h-screen p-6">
@@ -24,4 +25,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default withAuth(Index);
