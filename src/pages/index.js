@@ -9,16 +9,6 @@ import SubFeature from "@/components/SubFeature/TestimonialSection";
 import TutorStudent from "@/components/TutorStudent.tsx/Features";
 import { UseAuth } from "@/hooks/UseAuth";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export default function Home() {
 
   UseAuth({
@@ -28,7 +18,7 @@ export default function Home() {
 
   return (
     <Mainlayout>
-      <section className={`${geistSans.variable} ${geistMono.variable}`}>
+      <section>
         <HeroSection />
         <TutorStudent />
         <SubFeature />

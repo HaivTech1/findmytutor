@@ -1,4 +1,5 @@
 import { SessionProvider } from "next-auth/react";
+import { Poppins } from "next/font/google";
 import Head from "next/head";
 
 import CustomToast from "@/components/CustomToast";
@@ -7,6 +8,11 @@ import reducer, { initialState } from "@/context/StateReducers";
 import siteSettings from "@/hooks/siteSettings";
 
 import "@/styles/globals.css";
+
+const poppin = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function App({
   Component,
@@ -24,7 +30,9 @@ export default function App({
           <title>{siteSettings.title}</title>
         </Head>
 
-        <Component {...pageProps} />
+        <main className={poppin.className}>
+          <Component {...pageProps} />
+        </main>
         <CustomToast />
       </SessionProvider>
     </StateProvider>
