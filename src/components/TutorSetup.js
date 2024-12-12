@@ -145,8 +145,8 @@ const TutorSetup = () => {
 
     return (
       <div className="mt-10">
-        <div className="flex items-center space-x-3">
-          <div className="mb-4 w-full">
+        <div className="flex flex-col sm:flex-row items-center space-x-3">
+          <div className="mb-2 sm:mb-4 w-full">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Country
             </label>
@@ -169,7 +169,7 @@ const TutorSetup = () => {
             </select>
           </div>
 
-          <div className="mb-4 w-full">
+          <div className="mb-2 sm:mb-4 w-full">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               State
             </label>
@@ -192,8 +192,8 @@ const TutorSetup = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-3">
-          <div className="mb-4 w-full">
+        <div className="flex flex-col sm:flex-row items-center space-x-3">
+          <div className="mb-2 sm:mb-4 w-full">
             <TextInput
               disabled={false}
               placeholder="NCE"
@@ -202,7 +202,7 @@ const TutorSetup = () => {
             />
           </div>
 
-          <div className="mb-4 w-full">
+          <div className="mb-2 sm:mb-4 w-full">
             <TextInput
               disabled={false}
               placeholder="English language, Mathematics"
@@ -212,8 +212,8 @@ const TutorSetup = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-3">
-          <div className="mb-4 w-full">
+        <div className="flex flex-col sm:flex-row items-center space-x-3">
+          <div className="mb-2 sm:mb-4 w-full">
             <TextInput
               disabled={false}
               placeholder="4"
@@ -225,7 +225,7 @@ const TutorSetup = () => {
             />
           </div>
 
-          <div className="mb-4 w-full">
+          <div className="mb-2 sm:mb-4 w-full">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Teaching Mode
             </label>
@@ -248,8 +248,8 @@ const TutorSetup = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-3">
-          <div className="mb-4 w-full">
+        <div className="flex flex-col sm:flex-row items-center space-x-3">
+          <div className="mb-2 sm:mb-4 w-full">
             <TextInput
               disabled={false}
               placeholder="4"
@@ -259,7 +259,7 @@ const TutorSetup = () => {
             />
           </div>
 
-          <div className="mb-4 w-full">
+          <div className="mb-2 sm:mb-4 w-full">
             <TextInput
               disabled={false}
               placeholder="Monday 9am-10am, Tuesday 4pm-5pm"
@@ -272,9 +272,9 @@ const TutorSetup = () => {
         </div>
 
         <div className="mb-2">
-          <label className="text-sm text-black">
+          <label className="block text-sm font-medium text-gray-700">
             <span className="text-[#D60000]">*</span>
-            <i>Upload Verification Certificate</i>
+            Upload Verification Certificate
           </label>
 
           <div className="w-full border-[1px] rounded-xl">
@@ -284,7 +284,7 @@ const TutorSetup = () => {
             >
               <img
                 src="/assets/dashicons.svg"
-                className="px-[10rem] h-[60px] py-2 items-center w-[60px]"
+                className="px-[10rem] h-[20px] py-2 items-center w-[60px]"
                 alt="dash image"
               />
 
@@ -294,7 +294,9 @@ const TutorSetup = () => {
               >
                 <span className="text-black">
                   {inputs.verification_documents.length
-                    ? `${inputs.verification_documents.map(file => file.name).join(", ")} `
+                    ? `${inputs.verification_documents
+                        .map((file) => file.name)
+                        .join(", ")} `
                     : " Click here to Add your files here "}
                 </span>
               </p>
@@ -311,7 +313,7 @@ const TutorSetup = () => {
           </div>
         </div>
 
-        <div className="w-full mb-4">
+        <div className="w-full mb-1 sm:mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Bio
           </label>
@@ -324,7 +326,7 @@ const TutorSetup = () => {
             placeholder=""
             required
             rows="3"
-            className="w-full mb-4  px-4 py-2 text-gray-500 border-2 outline-none hover:border-primary focus:border-blue-500 focus:outline-none shadow-sm rounded-lg"
+            className="w-full mb-1 sm:mb-4  px-4 py-2 text-gray-500 border-2 outline-none hover:border-primary focus:border-blue-500 focus:outline-none shadow-sm rounded-lg"
           ></textarea>
         </div>
 

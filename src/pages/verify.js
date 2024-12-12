@@ -16,8 +16,8 @@ import { UseAuth } from '@/hooks/UseAuth';
 const Verify = () => {
 
     UseAuth({
-        middleware: "verify",
-        redirectIfAuthenticated: "/",
+      middleware: "verify",
+      redirectIfAuthenticated: "/",
     });
 
     const  [{userInfo}] = useStateProvider();
@@ -39,11 +39,13 @@ const Verify = () => {
             code: pin,
           })
           .then((response) => {
+            setIsLoading(false)
             const { data } = response;
             showSuccessToast(data.message);
             router.push("/");
           })
           .catch((error) => {
+            setIsLoading(false);
             const errorMessage = sendError(error);
             showErrorToast(
               errorMessage?.message ??
@@ -51,10 +53,9 @@ const Verify = () => {
             );
           });
       } catch (error) {
+        setIsLoading(false);
         const errorMessage = sendError(error);
         showErrorToast(errorMessage?.error);
-      } finally{
-        setIsLoading(false);
       }
     }
 
@@ -130,12 +131,12 @@ const Verify = () => {
             ))}
           </div>
 
-          {isLoading ||
-            (isLoadingResend && (
+          {(isLoading ||
+            isLoadingResend) && (
               <div className="text-xs flex flex-row items-center space-x-2 text-black">
                 <LoaderIcon /> Initializing...
               </div>
-            ))}
+            )}
 
           <div className="flex items-center justify-center space-x-2 mt-2">
             <p className="text-[12px] text-black">Didn't Receive any Code?</p>

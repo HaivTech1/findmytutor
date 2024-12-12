@@ -4,17 +4,21 @@ import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useCookies } from 'react-cookie';
 import { LoaderIcon } from 'react-hot-toast';
 
 import { showErrorToast, showSuccessToast } from '@/components/CustomToast';
 import Mainlayout from '@/components/Mainlayout';
 import TextInput from '@/components/TextInput';
 import Client from '@/context/Client';
+import { reducerCases } from '@/context/constants';
+import { useStateProvider } from "@/context/StateContext";
 import { sendError, ValidateInput } from '@/hooks/helpers';
 import { PageSEO } from '@/hooks/SEO';
 import siteSettings from '@/hooks/siteSettings';
 import { UseAuth } from '@/hooks/UseAuth';
 import google from "../../assets/googles.svg";
+import profileImage from "../../assets/SubTutorImg.jpg";
 
 const Register = () => {
 
@@ -23,43 +27,51 @@ const Register = () => {
        redirectIfAuthenticated: "/",
      });
 
+    const [{ userInfo }, dispatch] = useStateProvider();
+
      const router = useRouter();
      const { mode } = router.query;
 
     const [type, setType] = useState(mode ?? "student");
+    const [cookie, setCookie] = useCookies(["access_token"]);
+
 
     const tabLength = Array(2).fill(0);
     const [currentStep, setCurrentStep] = useState(0);
 
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
-      const [inputs, setInputs] = useState({
-        full_name: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
-        phone_number: "",
-        user_type: type,
-        grade_level: "",
-        subjects_of_interest: "",
-        learning_objectives: "",
-        learning_mode: "",
-        state: "",
-        qualifications: "",
-        subjects: "",
-        experience_years: "",
-        availability_schedule: "",
-        hourly_rate: "",
-        state: "",
-        country: "Nigeria",
-        bio: "",
-        teaching_mode: "",
-        verification_documents: [],
-      });
+
+    const [inputs, setInputs] = useState({
+      full_name: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+      phone_number: "",
+      user_type: type,
+      grade_level: "",
+      subjects_of_interest: "",
+      learning_objectives: "",
+      learning_mode: "",
+      state: "",
+      qualifications: "",
+      subjects: "",
+      experience_years: "",
+      availability_schedule: "",
+      hourly_rate: "",
+      state: "",
+      country: "Nigeria",
+      bio: "",
+      teaching_mode: "",
+      verification_documents: [],
+      profile_image: "",
+    });
 
     const fileInputRefs = useRef({
       verification_documents: React.createRef(),
     });
+
+    const profile_image = useRef(null);
 
     const [countries, setCountries] = useState(Country.getAllCountries());
     const selectedCountry = countries.find(
@@ -68,7 +80,6 @@ const Register = () => {
     const states = State.getAllStates().filter(
       (state) => state.countryCode === selectedCountry.isoCode
     );
-
   
     
     const handleSubmit = async () => {
@@ -91,6 +102,14 @@ const Register = () => {
                 formData.append(`verification_documents[${index}]`, file);
               });
             }
+
+             if (inputs.profile_image.file) {
+               formData.append("profile_image", {
+                 uri: inputs.profile_image.file,
+                 name: "uploaded_image.jpg",
+                 type: "image/jpeg",
+               });
+             }
 
 
         Client()
@@ -189,9 +208,25 @@ const Register = () => {
       }
     };
 
-    const handleOnChange = (text, input) => {
-      setInputs((prevState) => ({ ...prevState, [input]: text }));
-    };
+  const handleOnChange = (eventOrText, input) => {
+    let value;
+
+    if (input === "profile_image") {
+      const file = eventOrText.currentTarget.files[0]; 
+      value = file;
+
+      const imageUrl = URL.createObjectURL(file);
+      value = { file, imageUrl };
+    } else {
+      value = eventOrText;
+    }
+
+    setInputs((prevState) => ({
+      ...prevState,
+      [input]: value,
+    }));
+  };
+
 
     const handleTabPress = (step) => {
       setCurrentStep(step);
@@ -232,6 +267,11 @@ const Register = () => {
       }
     };
 
+    const handleProfileClick = (key) => {
+        profile_image.current.click();
+    };
+
+
     const step1 = () => {
       return (
         <div>
@@ -242,17 +282,37 @@ const Register = () => {
             </p>
           </div>
 
-          <div className="mb-4 relative">
+          <div className="flex items-center justify-center my-2">
+            <img
+              src={inputs?.profile_image?.imageUrl ?? profileImage}
+              className="w-20 h-20 rounded-full border-2 border-primary cursor-pointer"
+              ref={profileImage}
+              onClick={handleProfileClick}
+            />
+
+            <input
+              id="fileInput-profile_image"
+              name="profile_image"
+              type="file"
+              style={{ display: "none" }}
+              onChange={(e) => handleOnChange(e, "profile_image")}
+              ref={profile_image}
+            />
+          </div>
+          <p className="text-center text-sm font-bold mb-4">Select Profile Image</p>
+
+          <div className="mb-2 sm:mb-4 relative">
             <TextInput
               disabled={false}
               placeholder="John Doe"
               label="Full Name"
+              type="text"
               onChange={(e) => handleOnChange(e.target.value, "full_name")}
             />
           </div>
 
           {/* Email and Password Fields */}
-          <div className="mb-4 relative">
+          <div className="mb-2 sm:mb-4 relative">
             <TextInput
               disabled={false}
               placeholder="Enter here"
@@ -261,16 +321,17 @@ const Register = () => {
             />
           </div>
 
-          <div className="mb-4 relative">
+          <div className="mb-2 sm:mb-4 relative">
             <TextInput
               disabled={false}
               placeholder="Enter here"
               label="Phone Number"
+              type="tel"
               onChange={(e) => handleOnChange(e.target.value, "phone_number")}
             />
           </div>
 
-          <div className="mb-4">
+          <div className="mb-2 sm:mb-4">
             <TextInput
               disabled={false}
               placeholder="Enter here"
@@ -280,7 +341,7 @@ const Register = () => {
             />
           </div>
 
-          <div className="mb-4">
+          <div className="mb-2 sm:mb-4">
             <TextInput
               disabled={false}
               placeholder="Enter here"
@@ -305,8 +366,8 @@ const Register = () => {
             </p>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <div className="mb-4 w-full">
+          <div className="flex flex-col sm:flex-row items-center space-x-3">
+            <div className="mb-2 sm:mb-4 w-full">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Country
               </label>
@@ -329,7 +390,7 @@ const Register = () => {
               </select>
             </div>
 
-            <div className="mb-4 w-full">
+            <div className="mb-2 sm:mb-4 w-full">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 State
               </label>
@@ -352,8 +413,8 @@ const Register = () => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <div className="mb-4 w-full">
+          <div className="flex flex-col sm:flex-row items-center space-x-3">
+            <div className="mb-2 sm:mb-4 w-full">
               <TextInput
                 disabled={false}
                 placeholder="NCE"
@@ -364,7 +425,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="mb-4 w-full">
+            <div className="mb-2 sm:mb-4 w-full">
               <TextInput
                 disabled={false}
                 placeholder="English language, Mathematics"
@@ -374,8 +435,8 @@ const Register = () => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <div className="mb-4 w-full">
+          <div className="flex flex-col sm:flex-row items-center space-x-3">
+            <div className="mb-2 sm:mb-4 w-full">
               <TextInput
                 disabled={false}
                 placeholder="4"
@@ -387,7 +448,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="mb-4 w-full">
+            <div className="mb-2 sm:mb-4 w-full">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Teaching Mode
               </label>
@@ -412,8 +473,8 @@ const Register = () => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <div className="mb-4 w-full">
+          <div className="flex flex-col sm:flex-row items-center space-x-3">
+            <div className="mb-2 sm:mb-4 w-full">
               <TextInput
                 disabled={false}
                 placeholder="4"
@@ -423,7 +484,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="mb-4 w-full">
+            <div className="mb-2 sm:mb-4 w-full">
               <TextInput
                 disabled={false}
                 placeholder="Monday 9am-10am, Tuesday 4pm-5pm"
@@ -436,9 +497,9 @@ const Register = () => {
           </div>
 
           <div className="mb-2">
-            <label className="text-sm text-black">
+            <label className="block text-sm font-medium text-gray-700">
               <span className="text-[#D60000]">*</span>
-              <i>Upload Verification Certificate</i>
+              Upload Verification Certificate
             </label>
 
             <div className="w-full border-[1px] rounded-xl">
@@ -448,7 +509,7 @@ const Register = () => {
               >
                 <img
                   src="/assets/dashicons.svg"
-                  className="px-[10rem] h-[60px] py-2 items-center w-[60px]"
+                  className="px-[10rem] h-[20px] py-2 items-center w-[60px]"
                   alt="dash image"
                 />
 
@@ -477,7 +538,7 @@ const Register = () => {
             </div>
           </div>
 
-          <div className="w-full mb-4">
+          <div className="w-full mb-1 sm:mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Bio
             </label>
@@ -490,7 +551,7 @@ const Register = () => {
               placeholder=""
               required
               rows="3"
-              className="w-full mb-4  px-4 py-2 text-gray-500 border-2 outline-none hover:border-primary focus:border-blue-500 focus:outline-none shadow-sm rounded-lg"
+              className="w-full mb-1 sm:mb-4  px-4 py-2 text-gray-500 border-2 outline-none hover:border-primary focus:border-blue-500 focus:outline-none shadow-sm rounded-lg"
             ></textarea>
           </div>
         </div>
@@ -508,7 +569,7 @@ const Register = () => {
            </div>
 
            <div className="flex items-center space-x-3">
-             <div className="mb-4 w-full">
+             <div className="mb-2 sm:mb-4 w-full">
                <label className="block text-sm font-medium text-gray-700 mb-1">
                  Country
                </label>
@@ -531,7 +592,7 @@ const Register = () => {
                </select>
              </div>
 
-             <div className="mb-4 w-full">
+             <div className="mb-2 sm:mb-4 w-full">
                <label className="block text-sm font-medium text-gray-700 mb-1">
                  State
                </label>
@@ -555,7 +616,7 @@ const Register = () => {
            </div>
 
            <div className="flex items-center space-x-3">
-             <div className="mb-4 w-full">
+             <div className="mb-2 sm:mb-4 w-full">
                <TextInput
                  disabled={false}
                  placeholder="High School"
@@ -564,7 +625,7 @@ const Register = () => {
                />
              </div>
 
-             <div className="mb-4 w-full">
+             <div className="mb-2 sm:mb-4 w-full">
                <TextInput
                  disabled={false}
                  placeholder="English language, Mathematics"
@@ -577,7 +638,7 @@ const Register = () => {
            </div>
 
            <div className="flex items-center space-x-3">
-             <div className="mb-4 w-full">
+             <div className="mb-2 sm:mb-4 w-full">
                <label className="block text-sm font-medium text-gray-700 mb-1">
                  Learning Mode
                </label>
@@ -617,7 +678,7 @@ const Register = () => {
                placeholder=""
                required
                rows="3"
-               className="w-full mb-4  px-4 py-2 text-gray-500 border-2 outline-none hover:border-primary focus:border-blue-500 focus:outline-none shadow-sm rounded-lg"
+               className="w-full mb-1 sm:mb-4  px-4 py-2 text-gray-500 border-2 outline-none hover:border-primary focus:border-blue-500 focus:outline-none shadow-sm rounded-lg"
              ></textarea>
            </div>
          </div>
@@ -670,6 +731,7 @@ const Register = () => {
             "password",
             "password_confirmation",
             "phone_number",
+            "profile_image",
           ];
           var allow = ValidateInput(inputs, keys);
           if (allow.status) {
@@ -721,7 +783,7 @@ const Register = () => {
 
       <div className="flex items-center justify-center min-h-screen max-w-xl mx-auto">
         <div className="w-full p-8">
-          <h1 className="text-2xl font-bold mb-4">Create {type} account</h1>
+          <h1 className="text-2xl font-bold mb-1 sm:mb-4">Create {type} account</h1>
 
           {/* Social Login Buttons */}
           <div className="space-y-4">
@@ -742,7 +804,7 @@ const Register = () => {
             <hr className="flex-grow border-gray-300" />
           </div>
 
-          <div className="flex items-center mb-4 space-x-3">
+          <div className="flex items-center mb-1 sm:mb-4 space-x-3">
             {tabLength.map((_, index) => (
               <button
                 onClick={() => handleTabPress(index)}
