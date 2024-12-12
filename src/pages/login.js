@@ -13,6 +13,7 @@ import Client from "@/context/Client";
 import { reducerCases } from "@/context/constants";
 import { useStateProvider } from "@/context/StateContext";
 import { sendError } from "@/hooks/helpers";
+import { PageSEO } from "@/hooks/SEO";
 import siteSettings from "@/hooks/siteSettings";
 import { UseAuth } from "@/hooks/UseAuth";
 import google from "../../assets/googles.svg";
@@ -159,8 +160,8 @@ const Login = () => {
         description={siteSettings.description}
       />
 
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="w-full max-w-md p-8">
+      <div className="flex items-center justify-center min-h-screen max-w-xl mx-auto">
+        <div className="w-full  p-8">
           <h1 className="text-2xl font-bold mb-4">Log in</h1>
 
           {!mode && (

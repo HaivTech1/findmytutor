@@ -26,9 +26,9 @@ const TutorSetup = () => {
       verification_documents: [],
     });
 
-      const fileInputRefs = useRef({
-        verification_documents: React.createRef(),
-      });
+    const fileInputRefs = useRef({
+      verification_documents: React.createRef(),
+    });
 
     const [countries, setCountries] = useState(Country.getAllCountries());
     const selectedCountry = countries.find(
