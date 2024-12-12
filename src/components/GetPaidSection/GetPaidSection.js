@@ -36,11 +36,11 @@ const GetPaidSection = () => {
         </div>
 
         {/* Right: Content Section for large screen*/}
-        <div className="w-full hidden lg:block lg:w-[55%] h-96 bg-[#4be4c8] p-6 lg:p-10 flex-col justify-center rounded-lg">
-          <h2 className="text-2xl lg:text-6xl tracking-tighter font-bold text-black mb-4">
+        <div className="w-full hidden lg:block lg:w-[55%] h-96 bg-primary p-6 lg:p-10 flex-col justify-center rounded-lg">
+          <h2 className="text-2xl lg:text-6xl tracking-tighter font-bold text-white mb-4">
             Get paid to <br /> teach online
           </h2>
-          <p className="text-black text-lg lg:text-lg mb-6">
+          <p className="text-white text-lg lg:text-lg mb-6">
             Connect with thousands of learners around the world and teach from
             your living room.
           </p>
@@ -50,8 +50,8 @@ const GetPaidSection = () => {
         </div>
 
         {/* Right: Content Section for small screen*/}
-        <div className="w-full lg:hidden bg-[#4be4c8] p-6 lg:p-10 flex-col justify-center rounded-lg">
-          <h2 className="text-3xl tracking-tighter font-bold text-black mb-4">
+        <div className="w-full lg:hidden bg-primary p-6 lg:p-10 flex-col justify-center rounded-lg">
+          <h2 className="text-3xl tracking-tighter font-bold text-white mb-4">
             Get paid to teach online
           </h2>
           <p className="text-black text-lg lg:text-lg mb-6">

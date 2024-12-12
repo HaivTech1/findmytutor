@@ -32,7 +32,7 @@ const StepSection = () => {
             <div
               className={`flex items-center justify-center w-10 h-10 text-lg font-bold rounded ${
                 step.isActive
-                  ? "bg-[#158f78] text-white"
+                  ? "bg-primary text-white"
                   : "bg-gray-200 text-gray-900"
               }`}
             >

@@ -12,7 +12,7 @@ const Button = ({ text }) => {
   return (
     <button
       onClick={navigateToTutoReg}
-      className="bg-primary text-black mx-5 lg:mx-0 font-semibold px-8 py-3 border-2 border-black rounded-lg hover:bg-[#3ddabe]"
+      className="bg-primary text-white mx-5 lg:mx-0 font-semibold px-8 py-3 border-2 border-black rounded-lg hover:bg-secondary"
     >
       {text}
     </button>
