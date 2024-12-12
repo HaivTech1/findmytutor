@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,6 +26,7 @@ const Login = () => {
 
   const router = useRouter();
   const [{userInfo}, dispatch] = useStateProvider();
+  const [type, setType] = useState('student');
 
   const [inputs, setInputs] = useState({
     email: "",
@@ -34,6 +35,8 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const [cookie, setCookie] = useCookies(["access_token"]);
+
+  const { data: session } = useSession();
 
   const handleOnChange = (text, input) => {
     setInputs((prevState) => ({ ...prevState, [input]: text }));
@@ -84,6 +87,62 @@ const Login = () => {
       showErrorToast("Networking error: " + errorMessage?.error);
     }
   };
+
+  const handleGoogleLogin = (data) => {
+    try {
+      Client()
+        .post("google_login", {
+          email: data?.email,
+          full_name: data?.name,
+          profile_photo_path: data?.image,
+          user_type: type,
+        })
+        .then((response) => {
+          const {data} = response;
+
+          setCookie("access_token", data.access_token, {
+            path: "/",
+            maxAge: 3600,
+            sameSite: true,
+          });
+
+          setCookie("is_verified", data.user.is_verified ? 1 : 0, {
+            path: "/",
+            sameSite: true,
+          });
+
+          dispatch({
+            type: reducerCases.SET_USER_INFO,
+            userInfo: data.user,
+          });
+
+          if(type === "new_login"){
+            router.replace("/setup");
+          }else if (type === "old_login" || !data.profile) {
+            router.replace("/setup");
+          }else{
+            router.replace("/");
+          }
+        })
+        .catch((error) => {
+          const errorMessage = sendError(error);
+          showErrorToast(
+            errorMessage?.message ??
+              "There was an error connecting your sessioin."
+          );
+        });
+
+    } catch (error) {
+      const errorMessage = sendError(error);
+      showErrorToast(errorMessage?.error ?? "There was an error connecting your sessioin.");
+    }
+  }
+
+  useEffect(() => {
+    if (session?.user) {
+      handleGoogleLogin(session.user);
+    }
+  }, [session]);
 
   return (
     <Mainlayout>

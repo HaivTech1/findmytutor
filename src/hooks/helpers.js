@@ -29,3 +29,34 @@ export function isEmailVerified(reqCookies = null) {
   }
   return status === 1;
 }
+
+
+export const ValidateInput = (data, keys) => {
+  for (let key of keys) {
+    if (
+      key === "doc_Specialty" &&
+      data["category"].toLowerCase() !== "doctor"
+    ) {
+      continue;
+    }
+
+    if (
+      !data[key] ||
+      (typeof data[key] === "string" && data[key].trim() === "") ||
+      (Array.isArray(data[key]) && data[key].length === 0) ||
+      (typeof data[key] === "object" &&
+        !Array.isArray(data[key]) &&
+        Object.keys(data[key]).length === 0)
+    ) {
+      return {
+        status: false,
+        message: `${key} is required and cannot be empty.`,
+      };
+    }
+  }
+
+  return {
+    status: true,
+    message: "All fields are valid.",
+  };
+};

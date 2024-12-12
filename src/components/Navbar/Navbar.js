@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import Cookies from "js-cookie";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -10,6 +12,7 @@ import { MdArrowDropDown, MdLogin, MdLogout } from "react-icons/md";
 import { useStateProvider } from "@/context/StateContext";
 import { isLoggedIn } from "@/hooks/helpers";
 import logo from "../../../assets/logo.jpg";
+import { showSuccessToast } from "../CustomToast";
 import LanguageCurrency from "../Modals/LanguageCurrency";
 import Sidebar from "../SideBar/Sidebar";
 
@@ -27,6 +30,14 @@ const Navbar = () => {
   const navigateToLogin = () => {
     router.push("/login");
   };
+
+  const handleLogout = async () => {
+    Cookies.remove("access_token");
+    signOut();
+    showSuccessToast("Session logged out successfully!");
+    router.replace("/login");
+  }
+
   
   return (
     <div className="bg-white relative border-b-2 shadow-md">
@@ -72,7 +83,7 @@ const Navbar = () => {
                 </button>
 
                 <button
-                  onClick={navigateToLogin}
+                  onClick={handleLogout}
                   className="border-2 border-black px-4 py-2 rounded-md flex items-center gap-2"
                 >
                   <span className="">

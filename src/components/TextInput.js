@@ -18,7 +18,7 @@ const TextInput = ({
   return (
     <div className="relative">
       <label
-        className={` className="block text-sm font-medium text-gray-700" ${labelClassName} font-nunito-bold`}
+        className={`block text-sm font-medium text-gray-700 ${labelClassName} font-bold`}
       >
         {label}
       </label>
@@ -31,7 +31,7 @@ const TextInput = ({
         className={` ${
           disabled ? "bg-gray-200" : ""
         } w-full mt-1 px-4 py-2 border-2 rounded-lg placeholder:font-normal placeholder:text-sm
-                border-gray-300 hover:border-black focus:border-blue-500 
+                outline-none hover:border-primary focus:border-blue-500 
                  focus:outline-none ${className}`}
         {...props}
       />

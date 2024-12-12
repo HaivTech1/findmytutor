@@ -59,6 +59,7 @@ module.exports = withBundleAnalyzer({
   env: {
     LIVE_BASE_URL: process.env.LIVE_BASE_URL,
     TEST_BASE_URL: process.env.TEST_BASE_URL,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
   images: {
     remotePatterns: [
