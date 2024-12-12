@@ -24,7 +24,7 @@ export const UseAuth = ({
 
        dispatch({ type: reducerCases.SET_USER_INFO, userInfo: userData });
 
-       setCookie("is_verified", userData?.is_verified, {
+       setCookie("is_verified", userData?.is_verified ? 1 : 0, {
          path: "/",
          sameSite: true,
        });

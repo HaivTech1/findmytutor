@@ -5,13 +5,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
-import { MdLogin } from "react-icons/md";
+import { MdArrowDropDown, MdLogin, MdLogout } from "react-icons/md";
 
+import { useStateProvider } from "@/context/StateContext";
+import { isLoggedIn } from "@/hooks/helpers";
 import logo from "../../../assets/logo.jpg";
 import LanguageCurrency from "../Modals/LanguageCurrency";
 import Sidebar from "../SideBar/Sidebar";
 
 const Navbar = () => {
+  const [{userInfo}] = useStateProvider();
+  
   const [openDropdown, setOpenDropdown] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -23,6 +27,7 @@ const Navbar = () => {
   const navigateToLogin = () => {
     router.push("/login");
   };
+  
   return (
     <div className="bg-white relative border-b-2 shadow-md">
       <div className="w-[94%] lg:w-[95%] mx-auto flex justify-between items-center">
@@ -53,16 +58,40 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center justify-between space-x-12">
           <div className="flex items-center gap-5">
             <AiOutlineQuestionCircle className="text-xl" />
-            <button
-              onClick={navigateToLogin}
-              className="border-2 border-black px-4 py-2 rounded-md flex items-center gap-2"
-            >
-              <span className="">
-                {" "}
-                <MdLogin className="" />
-              </span>{" "}
-              Log In
-            </button>
+
+            {isLoggedIn() ? (
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={navigateToLogin}
+                  className="px-4 py-2 flex items-center gap-2 text-sm"
+                >
+                  {userInfo?.full_name}
+                  <span className="">
+                    <MdArrowDropDown className="" />
+                  </span>
+                </button>
+
+                <button
+                  onClick={navigateToLogin}
+                  className="border-2 border-black px-4 py-2 rounded-md flex items-center gap-2"
+                >
+                  <span className="">
+                    <MdLogout className="" />
+                  </span>
+                  Log out
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={navigateToLogin}
+                className="border-2 border-black px-4 py-2 rounded-md flex items-center gap-2"
+              >
+                <span className="">
+                  <MdLogin className="" />
+                </span>
+                Log In
+              </button>
+            )}
           </div>
         </div>
 
@@ -85,7 +114,7 @@ const Navbar = () => {
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out md:hidden`}
       >
-        <Sidebar toggleSidebar={toggleSidebar}/>
+        <Sidebar toggleSidebar={toggleSidebar} />
       </div>
 
       {/* Overlay when sidebar is open */}

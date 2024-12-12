@@ -57,7 +57,7 @@ const Login = () => {
             sameSite: true,
           });
 
-          setCookie("is_verified", data.user.is_verified, {
+          setCookie("is_verified", data.user.is_verified ? 1 : 0, {
             path: "/",
             sameSite: true,
           });

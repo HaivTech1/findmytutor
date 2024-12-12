@@ -8,7 +8,7 @@ const Mainlayout = ({ children }) => {
   return (
     <div>
       <Navbar />
-      <main>{children}</main>
+      <main className="bg-white">{children}</main>
       <Footer />
     </div>
   );
