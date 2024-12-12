@@ -1,12 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import Image from "next/image";
-
 import FAQ from "@/components/FAQ/Faq";
 import GetPaidSection from "@/components/GetPaidSection/GetPaidSection";
 import HeroSection from "@/components/HeroSection/HeroSection";
 import Mainlayout from "@/components/Mainlayout";
 import SubFeature from "@/components/SubFeature/TestimonialSection";
 import TutorStudent from "@/components/TutorStudent.tsx/Features";
+import { PageSEO } from "@/hooks/SEO";
+import siteSettings from "@/hooks/siteSettings";
 import { UseAuth } from "@/hooks/UseAuth";
 
 export default function Home() {
@@ -18,6 +17,11 @@ export default function Home() {
 
   return (
     <Mainlayout>
+      <PageSEO
+        title={siteSettings.title}
+        description={siteSettings.description}
+      />
+
       <section>
         <HeroSection />
         <TutorStudent />

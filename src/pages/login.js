@@ -154,6 +154,11 @@ const Login = () => {
 
   return (
     <Mainlayout>
+      <PageSEO
+        title={`Loign to ypur ${type} account`}
+        description={siteSettings.description}
+      />
+
       <div className="flex items-center justify-center min-h-screen">
         <div className="w-full max-w-md p-8">
           <h1 className="text-2xl font-bold mb-4">Log in</h1>
@@ -161,14 +166,14 @@ const Login = () => {
           {!mode && (
             <div className="text-start mb-4">
               <Link
-                href="/login"
+                href="/register?mode=student"
                 className="text-black underline font-extralight hover:text-primary"
               >
                 Sign up as a student
               </Link>
               <span className="px-2"> or</span>
               <Link
-                href="/login?mode=tutor"
+                href="/register?mode=tutor"
                 className="text-black underline font-extralight hover:text-primary"
               >
                 Sign up as a tutor

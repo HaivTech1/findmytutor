@@ -3,11 +3,18 @@ import React from "react";
 import CardList from "@/components/LessonHero/CardList";
 import Filters from "@/components/LessonHero/Filters";
 import Mainlayout from "@/components/Mainlayout";
+import { PageSEO } from "@/hooks/SEO";
+import siteSettings from "@/hooks/siteSettings";
 import withAuth from "@/hooks/withAuth";
 
 const Index = () => {
   return (
     <Mainlayout>
+      <PageSEO
+        title={`Find tutors on - ${siteSettings.title}`}
+        description={siteSettings.description}
+      />
+
       <div className="bg-white min-h-screen p-6">
         <h2 className="text-3xl text-center pt-4">
           Meet With Our Professional Teachers

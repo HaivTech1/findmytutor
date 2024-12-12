@@ -2,11 +2,18 @@ import React from "react";
 import Image from "next/image";
 
 import Mainlayout from "@/components/Mainlayout";
+import { PageSEO } from "@/hooks/SEO";
+import siteSettings from "@/hooks/siteSettings";
 import Logo from "../../assets/logo.jpg";
 
 const Contact = () => {
   return (
     <Mainlayout>
+      <PageSEO
+        title={`Contact us at ${siteSettings.title}`}
+        description={siteSettings.description}
+      />
+
       <div className="first-letter:flex justify-center items-center">
         <div className="w-[95%] lg:w-[80%] mx-auto flex items-center justify-center my-10">
           {/* <Image src={Logo} alt="" width={300} height={300} /> */}

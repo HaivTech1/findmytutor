@@ -59,7 +59,7 @@ const Navbar = () => {
             <Link href="/contact" className="text-primary">
               Contact Us
             </Link>
-            <Link href="/login?mode=tutor" className="text-primary">
+            <Link href="/register?mode=tutor" className="text-primary">
               Become a tutor
             </Link>
           </div>

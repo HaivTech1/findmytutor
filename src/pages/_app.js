@@ -11,7 +11,7 @@ import "@/styles/globals.css";
 
 const poppin = Poppins({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export default function App({
