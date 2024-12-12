@@ -59,7 +59,7 @@ const Navbar = () => {
             <Link href="/contact" className="text-primary">
               Contact Us
             </Link>
-            <Link href="/" className="text-primary">
+            <Link href="/login?mode=tutor" className="text-primary">
               Become a tutor
             </Link>
           </div>
@@ -73,7 +73,6 @@ const Navbar = () => {
             {isLoggedIn() ? (
               <div className="flex items-center space-x-2">
                 <button
-                  onClick={navigateToLogin}
                   className="px-4 py-2 flex items-center gap-2 text-sm"
                 >
                   {userInfo?.full_name}

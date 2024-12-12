@@ -25,14 +25,18 @@ const Login = () => {
   });
 
   const router = useRouter();
+  const {mode} = router.query;
+  
   const [{userInfo}, dispatch] = useStateProvider();
-  const [type, setType] = useState('student');
+  const [type, setType] = useState(mode ?? 'student');
 
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
+
   const [errors, setErrors] = useState([]);
   const [cookie, setCookie] = useCookies(["access_token"]);
 
@@ -89,6 +93,7 @@ const Login = () => {
   };
 
   const handleGoogleLogin = (data) => {
+    setIsLoadingGoogle(true);
     try {
       Client()
         .post("google_login", {
@@ -98,6 +103,7 @@ const Login = () => {
           user_type: type,
         })
         .then((response) => {
+          setIsLoadingGoogle(false);
           const {data} = response;
 
           setCookie("access_token", data.access_token, {
@@ -118,13 +124,15 @@ const Login = () => {
 
           if(type === "new_login"){
             router.replace("/setup");
-          }else if (type === "old_login" || !data.profile) {
+          }else if (type === "old_login" && !data.profile) {
             router.replace("/setup");
           }else{
             router.replace("/");
           }
         })
         .catch((error) => {
+          setIsLoadingGoogle(false);
+
           const errorMessage = sendError(error);
           showErrorToast(
             errorMessage?.message ??
@@ -150,21 +158,23 @@ const Login = () => {
         <div className="w-full max-w-md p-8">
           <h1 className="text-2xl font-bold mb-4">Log in</h1>
 
-          <div className="text-start mb-4">
-            <Link
-              href="/studentReg"
-              className="text-black underline font-extralight hover:text-primary"
-            >
-              Sign up as a student
-            </Link>
-            <span className="px-2"> or</span>
-            <Link
-              href="/"
-              className="text-black underline font-extralight hover:text-primary"
-            >
-              Sign up as a tutor
-            </Link>
-          </div>
+          {!mode && (
+            <div className="text-start mb-4">
+              <Link
+                href="/login"
+                className="text-black underline font-extralight hover:text-primary"
+              >
+                Sign up as a student
+              </Link>
+              <span className="px-2"> or</span>
+              <Link
+                href="/login?mode=tutor"
+                className="text-black underline font-extralight hover:text-primary"
+              >
+                Sign up as a tutor
+              </Link>
+            </div>
+          )}
 
           {/* Social Login Buttons */}
           <div className="space-y-4">
@@ -173,7 +183,8 @@ const Login = () => {
               className="w-full flex items-center justify-center font-semibold gap-2 py-2 px-4 border-2 border-black rounded-lg hover:bg-gray-100 transition"
             >
               <Image src={google} alt="google" width={30} height={30} />
-              Continue with Google
+              <p>Continue with Google</p>
+              {isLoadingGoogle && <LoaderIcon />}
             </button>
           </div>
 
@@ -205,7 +216,7 @@ const Login = () => {
           </div>
 
           {/* Forgot Password */}
-          <div className="flex flex-col gap-4 items-start mb-4">
+          <div className="flex items-center justify-between mb-4">
             <Link
               href="#"
               className="text-black text-sm underline font-semibold hover:text-primary"

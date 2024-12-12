@@ -7,6 +7,7 @@ import HeroSection from "@/components/HeroSection/HeroSection";
 import Mainlayout from "@/components/Mainlayout";
 import SubFeature from "@/components/SubFeature/TestimonialSection";
 import TutorStudent from "@/components/TutorStudent.tsx/Features";
+import { UseAuth } from "@/hooks/UseAuth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +20,12 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+
+  UseAuth({
+    middleware: "",
+    redirectIfAuthenticated: ""
+  });
+
   return (
     <Mainlayout>
       <section className={`${geistSans.variable} ${geistMono.variable}`}>
