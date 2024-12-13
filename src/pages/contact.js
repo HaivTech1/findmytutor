@@ -1,10 +1,12 @@
 import React from "react";
-import Image from "next/image";
+import { FaFacebookF, FaInstagram, FaPhone } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 import Mainlayout from "@/components/Mainlayout";
 import { PageSEO } from "@/hooks/SEO";
 import siteSettings from "@/hooks/siteSettings";
-import Logo from "../../assets/logo.jpg";
+import Link from "next/link";
+import { MdOutlineMail } from "react-icons/md";
 
 const Contact = () => {
   return (
@@ -14,123 +16,131 @@ const Contact = () => {
         description={siteSettings.description}
       />
 
-      <div className="first-letter:flex justify-center items-center">
-        <div className="w-[95%] lg:w-[80%] mx-auto flex items-center justify-center my-10">
-          {/* <Image src={Logo} alt="" width={300} height={300} /> */}
-          <div className="bg-white p-8 rounded-xl border-2 border-black w-[50%]">
-            <div className="flex justify-center items-center">
-              <Image src={Logo} alt="" width={100} height={100} />
+      <div className="min-h-screen py-10">
+        <div className="container mx-auto px-6">
+          <h2 className="text-blue-500 text-xl font-medium">INQUIRY</h2>
+          <h1 className="text-3xl font-bold text-gray-900 mt-2">
+            Let’s Get in{" "}
+            <span className="text-orange-500 underline">Touch</span>
+          </h1>
+
+          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Left Section */}
+            <div className="bg-blue-100 text-primary p-6 rounded-lg">
+              <div className="mb-8">
+                <h3 className="font-bold text-lg">Sales Department</h3>
+                <p className="mt-2 flex items-center">
+                  <span className="mr-2">
+                    <FaPhone />
+                  </span>{" "}
+                  +234 705 372 861
+                </p>
+              </div>
+              <div className="mb-8">
+                <h3 className="font-bold text-lg">HR Department</h3>
+                <p className="mt-2 flex items-center">
+                  <span className="mr-2">
+                    <FaPhone />
+                  </span>{" "}
+                  +234 705 372 813
+                </p>
+              </div>
+              <div className="mb-8">
+                <h3 className="font-bold text-lg">Sales Department</h3>
+                <p className="mt-2 flex items-center">
+                  <span className="mr-2">
+                    <MdOutlineMail />
+                  </span>{" "}
+                  info@FindMyTutor.ng
+                </p>
+              </div>
+              <div className="mb-8">
+                <h3 className="font-bold text-lg">Connect on Meet</h3>
+                <p className="mt-2 flex items-center">
+                  <span className="mr-2">📹</span> FindMyTutor
+                </p>
+              </div>
+
+              <h3 className="font-bold text-lg">Read Our Customers Feedback</h3>
+              <div className="mt-4 flex space-x-4">
+                <Link href="#">
+                  <FaFacebookF className="bg-white p-4 w-14 h-14 rounded-xl hover:bg-blue-50" />
+                </Link>
+                <Link href="#">
+                  {" "}
+                  <FaInstagram className="bg-white p-4 w-14 h-14 rounded-xl hover:bg-blue-50" />
+                </Link>
+                <Link href="#">
+                  {" "}
+                  <FaXTwitter className="bg-white p-4 w-14 h-14 rounded-xl hover:bg-blue-50" />
+                </Link>
+              </div>
             </div>
-            <form>
-              {/* First Name */}
-              <div className="mb-4">
-                <label
-                  htmlFor="firstName"
-                  className="block text-sm font-semibold text-gray-700"
-                >
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  className="mt-1 block w-full rounded-md border border-black placeholder:text-sm p-2 text-gray-900 focus:ring-2 focus:border-black"
-                  placeholder="Enter your first name"
-                />
-              </div>
 
-              {/* Last Name */}
-              <div className="mb-4">
-                <label
-                  htmlFor="lastName"
-                  className="block text-sm font-semibold text-gray-700"
-                >
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  className="mt-1 block w-full rounded-md border border-black placeholder:text-sm p-2 text-gray-900 focus:ring-2 focus:border-black"
-                  placeholder="Enter Last Name"
-                />
-              </div>
+            {/* Right Section */}
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <h3 className="text-gray-800 text-lg font-semibold mb-4">
+                Please fill in the form below.
+              </h3>
+              <form>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    className="border p-2 rounded-md w-full"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    className="border p-2 rounded-md w-full"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Contact Number"
+                    className="border p-2 rounded-md w-full"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Meet"
+                    className="border p-2 rounded-md w-full"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Subject"
+                    className="col-span-2 border p-2 rounded-md w-full"
+                  />
+                  <textarea
+                    placeholder="Message"
+                    className="col-span-2 border p-2 rounded-md w-full"
+                    rows="4"
+                  ></textarea>
+                </div>
 
-              {/* Email */}
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-semibold text-gray-700"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="mt-1 block w-full rounded-md border border-black placeholder:text-sm p-2 text-gray-900 focus:ring-2 focus:border-black"
-                  placeholder="Enter your email"
-                />
-              </div>
+                <div className="mt-4 flex items-start">
+                  <input
+                    type="checkbox"
+                    className="mr-2 h-4 w-4 mt-1"
+                    id="agree"
+                  />
+                  <label htmlFor="agree" className="text-sm text-gray-600">
+                    I agree to the{" "}
+                    <span className="text-blue-500">Terms & Conditions</span> of
+                    FindMyTutor.
+                  </label>
+                </div>
 
-              {/* Phone */}
-              <div className="mb-4">
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-semibold text-gray-700"
+                <button
+                  type="submit"
+                  className="mt-4 bg-primary text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition"
                 >
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  className="mt-1 block w-full rounded-md border border-black placeholder:text-sm p-2 text-gray-900 focus:ring-2 focus:border-black"
-                  placeholder="Enter your phone number"
-                />
-              </div>
+                  Send your inquiry →
+                </button>
 
-              {/* Job Title */}
-              <div className="mb-4">
-                <label
-                  htmlFor="jobTitle"
-                  className="block text-sm font-semibold text-gray-700"
-                >
-                  Job Title
-                </label>
-                <input
-                  type="text"
-                  id="jobTitle"
-                  className="mt-1 block w-full rounded-md border border-black placeholder:text-sm p-2 text-gray-900 focus:ring-2 focus:border-black"
-                  placeholder="Enter your job title"
-                  spellCheck={false}
-                />
-              </div>
-
-              {/* Country */}
-              <div className="mb-4">
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-semibold text-gray-700"
-                >
-                  Country
-                </label>
-                <select
-                  id="country"
-                  className="mt-1 block w-full rounded-md border border-black placeholder:text-sm p-2 text-gray-900 focus:ring-2 focus:border-black"
-                >
-                  <option value="">Select your country</option>
-                  <option value="us">United States</option>
-                  <option value="uk">United Kingdom</option>
-                  <option value="ca">Canada</option>
-                  <option value="au">Australia</option>
-                </select>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="w-full bg-primary hover:bg-secondary text-white py-2 px-4 rounded-md font-semibold text-sm"
-              >
-                Speak to an expert
-              </button>
-            </form>
+                <p className="mt-4 text-sm text-gray-600">
+                  🔒 We hate spam, and we respect your privacy.
+                </p>
+              </form>
+            </div>
           </div>
         </div>
       </div>

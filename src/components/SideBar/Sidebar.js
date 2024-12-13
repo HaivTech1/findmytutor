@@ -23,7 +23,7 @@ const Sidebar = ({ toggleSidebar }) => {
   }
 
   return (
-    <section className="bg-[#fff] h-full w-[250px] lg:w-[320px] border-r">
+    <section className="bg-[#fff] text-primary h-full w-[250px] lg:w-[320px] border-r">
       <div className="flex flex-col h-full max-md:items-stretch w-full">
         <div>
           <div className="flex items-center justify-between m-2 border-b border-gray-300">
@@ -33,7 +33,7 @@ const Sidebar = ({ toggleSidebar }) => {
                   <div className="bg-gray-100">
                     <MdLogout className="border w-7 h-7 p-2" />
                   </div>
-                  <buttoon onClick={handleLogout} className="text-sm">
+                  <buttoon onClick={handleLogout} className="text-sm text-primary">
                     Log out
                   </buttoon>
                 </div>
@@ -48,7 +48,7 @@ const Sidebar = ({ toggleSidebar }) => {
                 </div>
               </div>
             ) : (
-              <div className="flex items-center gap-2 pb-3 mt-2">
+              <div className="flex items-center text-primary gap-2 pb-3 mt-2">
                 <div className="bg-gray-100">
                   <MdLogin className="border w-7 h-7 p-2" />
                 </div>

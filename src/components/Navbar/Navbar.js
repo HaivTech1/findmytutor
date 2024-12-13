@@ -40,7 +40,7 @@ const Navbar = () => {
 
   
   return (
-    <div className="bg-white relative border-b-2 shadow-md">
+    <div className="bg-white text-primary relative border-b-2 shadow-md">
       <div className="w-[94%] lg:w-[95%] mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-12">
           <Link href="/" className="font-bold text-xl ">

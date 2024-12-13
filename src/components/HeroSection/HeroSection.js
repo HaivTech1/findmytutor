@@ -36,7 +36,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative">
+    <section className="relative text-primary">
       <div className="w-full lg:w-[95%] xl:max-w-7xl mx-auto grid lg:grid-cols-3 items-center space-x-10 just py-10">
         <div className="lg:col-span-2 w-full lg:mt-14">
           <div className="space-y-6">

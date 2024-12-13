@@ -28,7 +28,7 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <div className="w-full xl:w-[80%] mx-auto flex flex-col lg:flex-row xl:justify-center items-center gap-44 xl:gap-16 mt-16 md:mt-24 lg:mt-0  mb-10 lg:mb-40 ">
+    <div className="text-primary w-full xl:w-[80%] mx-auto flex flex-col lg:flex-row xl:justify-center items-center gap-44 xl:gap-16 mt-16 md:mt-24 lg:mt-0  mb-10 lg:mb-40 ">
       <div className="w-[88%] lg:w-[90%] relative items-center justify-center">
         <SubFeaturesImage images={images} />
       </div>

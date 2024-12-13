@@ -22,7 +22,7 @@ const Footer = () => {
   };
   return (
     <footer className="bg-primary text-white">
-      <div className="w-[90%] lg:w-[80%] mx-auto py-8 grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="w-[90%] lg:w-[80%] mx-auto py-12 grid md:grid-cols-3 lg:grid-cols-4 gap-8">
         {/* About Section */}
         <div>
           <h2 className="text-lg font-semibold mb-3">About Us</h2>

@@ -45,7 +45,7 @@ const Features = () => {
   ];
 
   return (
-    <div className="w-[93%] lg:w-[95%] xl:w-[84%] mx-auto flex flex-col md:flex-row justify-end items-center md:items-center py-10 lg:py-20">
+    <div className="text-primary w-[93%] lg:w-[95%] xl:w-[84%] mx-auto flex flex-col md:flex-row justify-end items-center md:items-center py-10 lg:py-20">
       {/* Left Section: Features */}
       <div className="">
         <div className="flex items-center gap-2">
