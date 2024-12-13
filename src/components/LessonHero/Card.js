@@ -31,30 +31,30 @@ const Card = ({
             <h3 className="text-lg font-bold">{full_name}</h3>
             <p className="text-sm text-gray-600 flex gap-2 items-center">
               <FaLocationArrow className="w-3 h-3 text-[#19549d]" />
-              {state}
+              <span className="text-xs">{state}</span>
             </p>
             <p className="text-sm text-gray-600 flex gap-2 items-center">
               <FaGraduationCap className="w-4 h-4 text-[#19549d]" />
-              {subjects}
+              <span className="text-xs"> {subjects}</span>
             </p>
 
             <p className="text-gray-600 w-[60%]">
               <span className="text-[15px] text-[#19549d] font-semibold">
                 Certificate:{" "}
               </span>
-              {qualifications}
+              <span className="text-xs">{qualifications}</span>
             </p>
             <p className="text-gray-600 lg:w-[60%]">
               <span className="text-[15px] text-[#19549d] font-semibold">
                 Bio:{" "}
               </span>
-              {limitText(bio, 150)}
+              <span className="text-xs">{limitText(bio, 150)}</span>
             </p>
             <p className="mt-2">
               <span className="text-[15px] text-[#19549d] font-semibold">
                 Experience:{" "}
               </span>
-              <strong>{experience_years} years of experience</strong>
+              <strong text-xs>{experience_years} years of experience</strong>
             </p>
           </div>
         </div>
