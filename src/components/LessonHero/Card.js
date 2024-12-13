@@ -11,11 +11,13 @@ const Card = ({
   qualifications,
   availability_schedule,
 }) => {
+
+  console.log(profile_picture);
   return (
     <div className="border border-black rounded-md p-4 flex justify-between gap-4">
       <div className="flex gap-3">
         <img
-          src={profile_picture.src}
+          src={profile_picture}
           alt={`${full_name}'s profile`}
           className="w-28 h-28 rounded-md object-cover"
         />
@@ -34,7 +36,8 @@ const Card = ({
           <div className="">
             <p className="text-black font-bold">
               {" "}
-              <span className="text-[16px] font-semibold">Service Fee:</span> ${hourly_rate}
+              <span className="text-[16px] font-semibold">Service Fee:</span> $
+              {hourly_rate}
               /hr
             </p>
             <h4 className="text-[16px] font-semibold">Availability:</h4>

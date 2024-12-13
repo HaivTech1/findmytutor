@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 const CardList = ({tutors}) => {
+  console.log(tutors);
 
   return (
     <section className="w-[70%] mx-auto">
@@ -13,7 +14,7 @@ const CardList = ({tutors}) => {
             key={tutor.id}
             {...tutor.profile}
             full_name={tutor.full_name}
-            profile_picture={tutor.image} 
+            profile_picture={tutor.image}
           />
         ))}
       </div>
