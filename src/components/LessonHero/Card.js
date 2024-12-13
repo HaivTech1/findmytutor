@@ -1,5 +1,6 @@
 import React from "react";
 import { StaticImageData } from "next/image";
+import { FaGraduationCap, FaLocationArrow } from "react-icons/fa";
 
 const Card = ({
   full_name,
@@ -10,11 +11,11 @@ const Card = ({
   profile_picture,
   qualifications,
   availability_schedule,
+  subjects,
 }) => {
-
   console.log(profile_picture);
   return (
-    <div className="border border-black rounded-md p-4 flex justify-between gap-4">
+    <div className="border border-black text-black rounded-md p-4 flex justify-between gap-4">
       <div className="flex gap-3">
         <img
           src={profile_picture}
@@ -22,13 +23,34 @@ const Card = ({
           className="w-28 h-28 rounded-md object-cover"
         />
         {/*Tutor details */}
-        <div className="flex gap-4 ">
+        <div className="flex gap-4 text-black">
           <div>
             <h3 className="text-lg font-bold">{full_name}</h3>
-            <p className="text-sm text-gray-600">{state}</p>
-            <p className="text-gray-600">{qualifications}</p>
-            <p className="text-gray-600">{bio}</p>
+            <p className="text-sm text-gray-600 flex gap-2 items-center">
+              <FaLocationArrow className="w-3 h-3 text-[#19549d]" />
+              {state}
+            </p>
+            <p className="text-sm text-gray-600 flex gap-2 items-center">
+              <FaGraduationCap className="w-4 h-4 text-[#19549d]" />
+              {subjects}
+            </p>
+
+            <p className="text-gray-600 w-[60%]">
+              <span className="text-[15px] text-[#19549d] font-semibold">
+                Certificate:{" "}
+              </span>
+              {qualifications}
+            </p>
+            <p className="text-gray-600 w-[80%]">
+              <span className="text-[15px] text-[#19549d] font-semibold">
+                Bio:{" "}
+              </span>
+              {bio}
+            </p>
             <p className="mt-2">
+              <span className="text-[15px] text-[#19549d] font-semibold">
+                Experience:{" "}
+              </span>
               <strong>{experience_years} years of experience</strong>
             </p>
           </div>
@@ -44,7 +66,7 @@ const Card = ({
             <ul className="list-disc list-inside text-gray-600">
               {Object.entries(availability_schedule).map(([day, time]) => (
                 <li key={day}>
-                  {day}: {time}
+                  {time}
                 </li>
               ))}
             </ul>

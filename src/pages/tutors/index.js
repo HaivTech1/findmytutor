@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import CardList from "@/components/LessonHero/CardList";
 import Filters from "@/components/LessonHero/Filters";
 import Mainlayout from "@/components/Mainlayout";
@@ -8,24 +7,30 @@ import { sendError } from "@/hooks/helpers";
 import { PageSEO } from "@/hooks/SEO";
 import siteSettings from "@/hooks/siteSettings";
 import { UseAuth } from "@/hooks/UseAuth";
-import withAuth from "@/hooks/withAuth";
 
 const Index = () => {
-
   const [tutors, setTutors] = useState([]);
+  const [filters, setFilters] = useState({
+    subject: "",
+    price: "",
+    state: "",
+    availability: "",
+    search: "",
+  });
 
   UseAuth({
     middleware: "guest",
-    redirectIfAuthenticated: ""
+    redirectIfAuthenticated: "",
   });
 
+  // Fetching tutor data
   const handleFetchTutors = async () => {
     try {
       Client()
         .get("/all/tutors")
         .then((response) => {
           const { data } = response;
-          setTutors(data?.data)
+          setTutors(data?.data);
         })
         .catch((error) => {
           const errorMessage = sendError(error);
@@ -37,11 +42,38 @@ const Index = () => {
     }
   };
 
-
   useEffect(() => {
-    handleFetchTutors()
-  }, [])
+    handleFetchTutors();
+  }, []);
 
+  // Handle filter input change
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Filter tutors based on filter values
+  const filteredTutors = tutors.filter((tutor) => {
+    return (
+      (filters.subject === "" ||
+        tutor.profile.subjects.some((subject) =>
+          subject.toLowerCase().includes(filters.subject.toLowerCase())
+        )) &&
+      (filters.price === "" ||
+        tutor.profile.hourly_rate.toString().includes(filters.price)) &&
+      (filters.state === "" ||
+        (tutor.profile.state &&
+          tutor.profile.state
+            .toLowerCase()
+            .includes(filters.state.toLowerCase()))) &&
+      (filters.availability === "" ||
+        tutor.profile.availability_schedule.some((schedule) =>
+          schedule.toLowerCase().includes(filters.availability.toLowerCase())
+        )) &&
+      (filters.search === "" ||
+        tutor.full_name.toLowerCase().includes(filters.search.toLowerCase()))
+    );
+  });
 
   return (
     <Mainlayout>
@@ -49,19 +81,23 @@ const Index = () => {
         title={`Find tutors on - ${siteSettings.title}`}
         description={siteSettings.description}
       />
-
-      <div className="bg-white min-h-screen p-6">
+      <div className="bg-white min-h-screen p-6 text-black">
         <h2 className="text-3xl text-center pt-4">
           Meet With Our Professional Teachers
         </h2>
         <div className="bg-primary h-1 w-20 mx-auto mb-4"></div>
-        <Filters />
+
+        {/* Filters Component */}
+        <Filters filters={filters} onFilterChange={handleFilterChange} />
+
         <div className="w-[70%] mx-auto pb-5">
           <h2 className="text-2xl font-bold mt-6">
-            28,433 English teachers available
+            {filteredTutors.length} English teachers available
           </h2>
         </div>
-        <CardList tutors={tutors} />
+
+        {/* CardList Component */}
+        <CardList tutors={filteredTutors} />
       </div>
     </Mainlayout>
   );
