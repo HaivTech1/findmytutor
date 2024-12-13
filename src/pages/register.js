@@ -785,25 +785,7 @@ const Register = () => {
         <div className="w-full p-8">
           <h1 className="text-2xl font-bold mb-1 sm:mb-4">Create {type} account</h1>
 
-          {/* Social Login Buttons */}
-          <div className="space-y-4">
-            <button
-              onClick={signIn}
-              className="w-full flex items-center justify-center font-semibold gap-2 py-2 px-4 border-2 border-black rounded-lg hover:bg-gray-100 transition"
-            >
-              <Image src={google} alt="google" width={30} height={30} />
-              <p>Continue with Google</p>
-              {isLoadingGoogle && <LoaderIcon />}
-            </button>
-          </div>
-
-          {/* Divider */}
-          <div className="flex items-center my-6">
-            <hr className="flex-grow border-gray-300" />
-            <span className="px-4 text-black font-semibold">or</span>
-            <hr className="flex-grow border-gray-300" />
-          </div>
-
+         
           <div className="flex items-center mb-1 sm:mb-4 space-x-3">
             {tabLength.map((_, index) => (
               <button
