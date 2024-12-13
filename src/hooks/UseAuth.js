@@ -19,6 +19,8 @@ export const UseAuth = ({
 
    const fetchUserInfo = async () => {
      try {
+        console.log("login state is : " + isLoggedIn());
+        if(!isLoggedIn()) return [];
        const res = await Client().get("/user");
        const userData = res?.data?.data;
 
