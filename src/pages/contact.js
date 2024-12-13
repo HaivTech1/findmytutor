@@ -33,7 +33,7 @@ const Contact = () => {
                   <span className="mr-2">
                     <FaPhone />
                   </span>{" "}
-                  +234 705 372 861
+                  {siteSettings.phone_number}
                 </p>
               </div>
               <div className="mb-8">
@@ -42,7 +42,7 @@ const Contact = () => {
                   <span className="mr-2">
                     <FaPhone />
                   </span>{" "}
-                  +234 705 372 813
+                  {siteSettings.phone_number}
                 </p>
               </div>
               <div className="mb-8">
@@ -51,7 +51,7 @@ const Contact = () => {
                   <span className="mr-2">
                     <MdOutlineMail />
                   </span>{" "}
-                  info@FindMyTutor.ng
+                  {siteSettings.email}
                 </p>
               </div>
               <div className="mb-8">
@@ -70,7 +70,7 @@ const Contact = () => {
                   {" "}
                   <FaInstagram className="bg-white p-4 w-14 h-14 rounded-xl hover:bg-blue-50" />
                 </Link>
-                <Link href="#">
+                <Link href="">
                   {" "}
                   <FaXTwitter className="bg-white p-4 w-14 h-14 rounded-xl hover:bg-blue-50" />
                 </Link>

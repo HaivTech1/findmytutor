@@ -3,6 +3,7 @@ import { StaticImageData } from "next/image";
 import { FaGraduationCap, FaLocationArrow } from "react-icons/fa";
 
 import { limitText } from "@/hooks/helpers";
+import siteSettings from "@/hooks/siteSettings";
 
 const Card = ({
   full_name,
@@ -17,8 +18,8 @@ const Card = ({
 }) => {
   console.log(profile_picture);
   return (
-    <div className="border border-black text-black rounded-md p-4 flex justify-between gap-4">
-      <div className="flex gap-3">
+    <div className="border w-full border-black text-black rounded-md p-4 grid grid-cols-1 gap-1 lg:flex lg:justify-between">
+      <div className="flex flex-col lg:flex-row gap-3">
         <img
           src={profile_picture}
           alt={`${full_name}'s profile`}
@@ -43,7 +44,7 @@ const Card = ({
               </span>
               {qualifications}
             </p>
-            <p className="text-gray-600 w-[80%]">
+            <p className="text-gray-600 lg:w-[60%]">
               <span className="text-[15px] text-[#19549d] font-semibold">
                 Bio:{" "}
               </span>
@@ -56,31 +57,33 @@ const Card = ({
               <strong>{experience_years} years of experience</strong>
             </p>
           </div>
-
-          <div className="">
-            <p className="text-black font-bold">
-              {" "}
-              <span className="text-[16px] font-semibold">Service Fee:</span> $
-              {hourly_rate}
-              /hr
-            </p>
-            <h4 className="text-[16px] font-semibold">Availability:</h4>
-            <ul className="list-disc list-inside text-gray-600">
-              {Object.entries(availability_schedule).map(([day, time]) => (
-                <li key={day}>{time}</li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
+
       {/*button toggle */}
       <div className="flex flex-col gap-2">
-        <button className="bg-primary text-white px-4 py-2 rounded-lg">
-          Book trial lesson
-        </button>
-        <button className="border border-gray-300 px-4 py-2 rounded-lg">
-          Send message
-        </button>
+        <div className="">
+          <p className="text-black font-bold">
+            {" "}
+            <span className="text-[16px] font-semibold">Service Fee:</span> {siteSettings.currency}
+            {hourly_rate}
+            /hr
+          </p>
+          <h4 className="text-[16px] font-semibold">Availability:</h4>
+          <ul className="list-disc list-inside text-gray-600">
+            {Object.entries(availability_schedule).map(([day, time]) => (
+              <li key={day}>{time}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex gap-3">
+          <button className="bg-primary text-white px-4 py-2 rounded-lg">
+            Book trial lesson
+          </button>
+          <button className="border border-gray-300 px-4 py-2 rounded-lg">
+            Send message
+          </button>
+        </div>
       </div>
     </div>
   );

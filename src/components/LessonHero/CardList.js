@@ -7,7 +7,7 @@ const CardList = ({tutors}) => {
   console.log(tutors);
 
   return (
-    <section className="w-[70%] mx-auto">
+    <section className="lg:w-[70%] mx-auto">
       <div className="grid grid-cols-1 gap-4">
         {tutors?.map((tutor) => (
           <Card

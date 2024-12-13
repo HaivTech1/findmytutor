@@ -52,7 +52,7 @@ const Navbar = () => {
           </Link>
 
           {/*Navbar Link */}
-          <div className="hidden lg:flex space-x-6 font-semibold text-sm">
+          <div className="hidden md:flex space-x-6 font-semibold text-sm">
             <Link href="/tutors" className="text-primary">
               Find tutors
             </Link>
@@ -66,7 +66,7 @@ const Navbar = () => {
         </div>
 
         {/*SubNavigation */}
-        <div className="hidden lg:flex items-center justify-between space-x-12">
+        <div className="hidden md:flex items-center justify-between space-x-12">
           <div className="flex items-center gap-5">
             <AiOutlineQuestionCircle className="text-xl" />
 
@@ -105,8 +105,8 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/*menu bar */}
-        <div className="flex items-center lg:hidden gap-4">
+        {/*menu bar for small screen size */}
+        <div className="flex items-center md:hidden gap-4">
           <button onClick={toggleSidebar} className=" text-2xl">
             <FiMenu className="border w-7 h- rounded-sm text-[#000]" />
           </button>
@@ -122,7 +122,7 @@ const Navbar = () => {
       <div
         className={`fixed top-0 right-0 h-full w-64 bg-white text-black transform z-20 overflow-y-auto ${
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out md:hidden`}
+        } transition-transform duration-300 ease-in-out lg:hidden`}
       >
         <Sidebar toggleSidebar={toggleSidebar} />
       </div>

@@ -5,7 +5,7 @@ import PaidImage from "../../../assets/PaidImage.jpg";
 
 const GetPaidSection = () => {
   return (
-    <section className="lg:border border-black w-full lg:w-[80%] mx-auto mt-10 lg:my-20 rounded-lg overflow-hidden">
+    <section className="lg:border border-black w-full lg:w-[80%] mx-auto mt-10 lg:my-20 overflow-hidden">
       <div className="relative flex flex-col lg:flex-row items-center justify-between">
         {/* Left: Layered Image Section */}
         <div className="w-[100%] lg:w-[40%] h-96 flex items-center justify-center relative ">
@@ -50,11 +50,11 @@ const GetPaidSection = () => {
         </div>
 
         {/* Right: Content Section for small screen*/}
-        <div className="w-full lg:hidden bg-primary p-6 lg:p-10 flex-col justify-center rounded-lg">
+        <div className="w-full lg:hidden bg-primary p-6 lg:p-10 flex-col justify-center">
           <h2 className="text-3xl tracking-tighter font-bold text-white mb-4">
             Get paid to teach online
           </h2>
-          <p className="text-black text-lg lg:text-lg mb-6">
+          <p className="text-white text-lg lg:text-lg mb-6">
             Connect with thousands of learners around the world and teach from
             your living room.
           </p>

@@ -18,6 +18,7 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
+  
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
       <SessionProvider session={session}>

@@ -7,6 +7,8 @@ import { sendError } from "@/hooks/helpers";
 import { PageSEO } from "@/hooks/SEO";
 import siteSettings from "@/hooks/siteSettings";
 import { UseAuth } from "@/hooks/UseAuth";
+import Loader from "@/components/Loader";
+import { FaArrowRight } from "react-icons/fa";
 
 const Index = () => {
   const [tutors, setTutors] = useState([]);
@@ -17,6 +19,7 @@ const Index = () => {
     availability: "",
     search: "",
   });
+  const [loading, setLoading] = useState(true);
 
   UseAuth({
     middleware: "guest",
@@ -26,19 +29,28 @@ const Index = () => {
   // Fetching tutor data
   const handleFetchTutors = async () => {
     try {
-      Client()
+      const timeout = setTimeout(() => {
+        setLoading(false);
+      }, 7000);
+
+      await Client()
         .get("/all/tutors")
         .then((response) => {
           const { data } = response;
           setTutors(data?.data);
+          clearTimeout(timeout);
+          setLoading(false);
         })
         .catch((error) => {
           const errorMessage = sendError(error);
           console.log(errorMessage);
+          clearTimeout(timeout);
+          setLoading(false);
         });
     } catch (error) {
       const errorMessage = sendError(error);
       console.log(errorMessage);
+      setLoading(false);
     }
   };
 
@@ -81,23 +93,31 @@ const Index = () => {
         title={`Find tutors on - ${siteSettings.title}`}
         description={siteSettings.description}
       />
-      <div className="bg-white min-h-screen p-6 text-black">
+      <div className="bg-white min-h-screen p-2 text-black">
         <h2 className="text-3xl text-center pt-4">
           Meet With Our Professional Teachers
         </h2>
         <div className="bg-primary h-1 w-20 mx-auto mb-4"></div>
 
         {/* Filters Component */}
+        <p className="text-sm lg:w-[70%] mx-auto text-orange-700 font-semibold p-3 flex items-center gap-2">
+          Filter By
+          <FaArrowRight />
+        </p>
         <Filters filters={filters} onFilterChange={handleFilterChange} />
 
-        <div className="w-[70%] mx-auto pb-5">
+        <div className="lg:w-[70%] mx-auto pb-5">
           <h2 className="text-2xl font-bold mt-6">
-            {filteredTutors.length} English teachers available
+            {filteredTutors.length} Teachers Available
           </h2>
         </div>
 
-        {/* CardList Component */}
-        <CardList tutors={filteredTutors} />
+        {/* Loader */}
+        {loading ? (
+          <Loader/>
+        ) : (
+          <CardList tutors={filteredTutors} />
+        )}
       </div>
     </Mainlayout>
   );

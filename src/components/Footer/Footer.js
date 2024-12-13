@@ -21,7 +21,7 @@ const Footer = () => {
     setIsExpanded((prev) => !prev);
   };
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-primary text-white mt-10">
       <div className="w-[90%] lg:w-[80%] mx-auto py-12 grid md:grid-cols-3 lg:grid-cols-4 gap-8">
         {/* About Section */}
         <div>
