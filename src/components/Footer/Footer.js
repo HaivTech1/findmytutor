@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 
+import siteSettings from "@/hooks/siteSettings";
+
 const Footer = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -42,7 +44,7 @@ const Footer = () => {
           <h2 className="text-lg font-semibold mb-3">Quick Links</h2>
           <ul className="text-sm flex flex-col gap-2">
             <Link href="/findMyTutor" className="hover:text-[#21caab]">
-             Find Tutors
+              Find Tutors
             </Link>
             <Link href="/login" className="hover:text-[#21caab]">
               Login
@@ -61,13 +63,13 @@ const Footer = () => {
           <h2 className="text-lg font-semibold mb-3">Contact</h2>
           <ul className="text-sm flex  flex-col gap-2">
             <li className="flex items-center gap-2">
-              <FaLocationArrow /> 123 Main Street, Boston, MA, Nigeria
+              <FaLocationArrow /> {siteSettings.address}
             </li>
             <li className="flex items-center gap-2">
-              <MdOutlineMail /> support@example.com
+              <MdOutlineMail /> {siteSettings.email}
             </li>
             <li className="flex items-center gap-2">
-              <FaPhone /> +1 (123) 456-7890
+              <FaPhone /> {siteSettings.phone_number}
             </li>
           </ul>
         </div>
