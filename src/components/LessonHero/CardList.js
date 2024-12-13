@@ -1,79 +1,50 @@
 "use client";
-import React from "react";
 
+import React, { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import Card from "./Card";
-import Tutor2 from "../../../assets/HeroImage.jpg";
-import Tutor1 from "../../../assets/PaidImage.jpg";
-
-const tutorData = [
-  {
-    id: 1,
-    full_name: "John Doe",
-    email: "johndoe@example.com",
-    phone_number: "123456789",
-    profile_picture: Tutor2,
-    type: "tutor",
-    profile: {
-      qualifications: "PhD in Mathematics",
-      subjects: ["Mathematics", "Physics"],
-      experience_years: 5,
-      availability_schedule: {
-        Monday: "9am-5pm",
-        Wednesday: "1pm-6pm",
-      },
-      hourly_rate: 50.0,
-      state: "New York, NY",
-      bio: "Experienced mathematics tutor with a PhD.",
-      teaching_mode: "online",
-      verification_documents: [
-        "http://findmytutor.haivtech.com.ng/storage/cert1.pdf",
-        "http://findmytutor.haivtech.com.ng/storage/cert2.pdf",
-      ],
-    },
-    created_at: "2024-12-09T12:34:56",
-  },
-  {
-    id: 2,
-    full_name: "Frances Nonso",
-    email: "johndoe@example.com",
-    phone_number: "123456789",
-    profile_picture: Tutor1,
-    type: "tutor",
-    profile: {
-      qualifications: "PhD in Mathematics",
-      subjects: ["Mathematics", "Physics"],
-      experience_years: 5,
-      availability_schedule: {
-        Monday: "9am-5pm",
-        Wednesday: "1pm-6pm",
-      },
-      hourly_rate: 50.0,
-      state: "New York, NY",
-      bio: "Experienced mathematics tutor with a PhD.",
-      teaching_mode: "online",
-      verification_documents: [
-        "http://findmytutor.haivtech.com.ng/storage/cert1.pdf",
-        "http://findmytutor.haivtech.com.ng/storage/cert2.pdf",
-      ],
-    },
-    created_at: "2024-12-09T12:34:56",
-  },
-];
+import getAllTutors from "@/lib/getAllTutors";
 
 const CardList = () => {
+  const [tutors, setTutors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [cookies] = useCookies(["access_token"]); 
+
+  useEffect(() => {
+    const fetchTutors = async () => {
+      try {
+        const token = cookies.access_token; 
+        console.log("Cookies:", cookies);
+
+        if (!token) {
+          throw new Error("Access token is missing.");
+        }
+
+        const fetchedTutors = await getAllTutors(token); 
+        setTutors(fetchedTutors.data); 
+      } catch (err) {
+        setError(err.message || "Failed to fetch tutors.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTutors();
+  }, [cookies]); 
+
+  if (loading) return <p>Loading tutors...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <section className="w-[70%] mx-auto">
       <div className="grid grid-cols-1 gap-4">
-        {/* {tutorData.map((tutor, index) => (
-        <Card key={index} {...tutor} />
-      ))} */}
-
-        {tutorData.map((tutor) => (
+        {tutors.map((tutor) => (
           <Card
-          key={tutor.id}
-          {...tutor.profile} 
-          full_name={tutor.full_name} 
-          profile_picture={tutor.profile_picture}
+            key={tutor.id}
+            {...tutor.profile}
+            full_name={tutor.full_name}
+            profile_picture={tutor.image} 
           />
         ))}
       </div>

@@ -1,0 +1,1 @@
+export const baseUrl = "http://findmytutor.haivtech.com.ng/api/v1/";
