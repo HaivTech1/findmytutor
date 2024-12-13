@@ -60,3 +60,11 @@ export const ValidateInput = (data, keys) => {
     message: "All fields are valid.",
   };
 };
+
+export const limitText = (text, maxLength = 10) => {
+  if (text?.length > maxLength) {
+    return text.slice(0, maxLength) + "...";
+  } else {
+    return text;
+  }
+};

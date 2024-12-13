@@ -2,6 +2,8 @@ import React from "react";
 import { StaticImageData } from "next/image";
 import { FaGraduationCap, FaLocationArrow } from "react-icons/fa";
 
+import { limitText } from "@/hooks/helpers";
+
 const Card = ({
   full_name,
   bio,
@@ -45,7 +47,7 @@ const Card = ({
               <span className="text-[15px] text-[#19549d] font-semibold">
                 Bio:{" "}
               </span>
-              {bio}
+              {limitText(bio, 150)}
             </p>
             <p className="mt-2">
               <span className="text-[15px] text-[#19549d] font-semibold">
@@ -65,9 +67,7 @@ const Card = ({
             <h4 className="text-[16px] font-semibold">Availability:</h4>
             <ul className="list-disc list-inside text-gray-600">
               {Object.entries(availability_schedule).map(([day, time]) => (
-                <li key={day}>
-                  {time}
-                </li>
+                <li key={day}>{time}</li>
               ))}
             </ul>
           </div>
