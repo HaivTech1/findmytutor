@@ -18,7 +18,6 @@ const Card = ({
   availability_schedule,
   subjects,
 }) => {
-  console.log(profile_picture);
   const [isExpanded, setIsExpanded] = useState(false);
   const [bookingModal, setBookingModal] = useState(false);
 
@@ -103,7 +102,7 @@ const Card = ({
             onClick={toggleBookingModal}
             className="bg-primary text-white px-2 py-2 rounded-lg"
           >
-            Book A Session
+            Book A Session 
           </button>
         </div>
       </div>

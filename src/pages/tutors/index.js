@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
+
 import CardList from "@/components/LessonHero/CardList";
 import Filters from "@/components/LessonHero/Filters";
+import Loader from "@/components/Loader";
 import Mainlayout from "@/components/Mainlayout";
 import Client from "@/context/Client";
 import { sendError } from "@/hooks/helpers";
 import { PageSEO } from "@/hooks/SEO";
 import siteSettings from "@/hooks/siteSettings";
 import { UseAuth } from "@/hooks/UseAuth";
-import Loader from "@/components/Loader";
-import { FaArrowRight } from "react-icons/fa";
 
 const Index = () => {
   const [tutors, setTutors] = useState([]);
@@ -38,8 +39,6 @@ const Index = () => {
         .then((response) => {
           const { data } = response;
           setTutors(data?.data);
-          console.log(data)
-          // clearTimeout(timeout);
           setLoading(false);
         })
         .catch((error) => {
@@ -59,13 +58,11 @@ const Index = () => {
     handleFetchTutors();
   }, []);
 
-  // Handle filter input change
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Filter tutors based on filter values
   const filteredTutors = tutors.filter((tutor) => {
     return (
       (filters.subject === "" ||
