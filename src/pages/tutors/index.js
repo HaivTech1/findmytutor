@@ -38,7 +38,8 @@ const Index = () => {
         .then((response) => {
           const { data } = response;
           setTutors(data?.data);
-          clearTimeout(timeout);
+          console.log(data)
+          // clearTimeout(timeout);
           setLoading(false);
         })
         .catch((error) => {
