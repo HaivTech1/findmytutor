@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Button from "../Button";
 import HeroImage1 from "../../../assets/SubTutorImg.jpg";
 import HeroImage2 from "../../../assets/SubTutorImg.jpg";
@@ -6,6 +7,23 @@ import HeroImage3 from "../../../assets/SubTutorImg.jpg";
 import SubFeaturesImage from "./SubFeatureImage";
 
 const TestimonialSection = () => {
+  // Animation Variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.3 },
+    },
+  };
+
   const images = [
     {
       src: HeroImage1,
@@ -28,32 +46,57 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <div className="text-primary w-full xl:w-[80%] mx-auto flex flex-col lg:flex-row xl:justify-center items-center gap-44 xl:gap-16 mt-16 md:mt-24 lg:mt-0  mb-10 lg:mb-40 ">
-      <div className="w-[88%] lg:w-[90%] relative items-center justify-center">
+    <motion.div
+      className="text-primary w-full xl:w-[80%] mx-auto flex flex-col lg:flex-row xl:justify-center items-center gap-44 xl:gap-16 mt-16 md:mt-24 lg:mt-0 mb-10 lg:mb-40"
+      variants={staggerContainer}
+      initial="hidden"
+      animate="visible"
+    >
+      {/* Images Section */}
+      <motion.div
+        className="w-[88%] lg:w-[90%] relative items-center justify-center"
+        variants={fadeIn}
+      >
         <SubFeaturesImage images={images} />
-      </div>
-      <div className="flex flex-col gap-5 justify-center items-center mt-16 md:mt-40 lg:-mt-10">
-        {/*Large screen size */}
-        <h2 className="text-2xl hidden lg:block lg:text-5xl text-left font-bold w-[9%] lg:w-[70%] xl:w-[60%] lg:leading-[52px]">
-          "FMT allowed me to make a living without leaving home!"
-        </h2>
-        {/*small screen size  */}
-        <div className="flex lg:hidden items-center gap-2 w-[95%] mx-auto">
+      </motion.div>
+
+      {/* Text Section */}
+      <motion.div
+        className="flex flex-col gap-5 justify-center items-center mt-16 md:mt-40 lg:-mt-10"
+        variants={fadeIn}
+      >
+        {/* Large screen size */}
+        <motion.h2
+          className="text-2xl hidden lg:block lg:text-5xl text-left font-bold w-[90%] lg:w-[70%] xl:w-[60%] lg:leading-[52px]"
+          variants={fadeIn}
+        >
+          "FindMyTutor allowed me to make a living without leaving home!"
+        </motion.h2>
+
+        {/* Small screen size */}
+        <motion.div
+          className="flex lg:hidden items-center gap-2 w-[95%] mx-auto"
+          variants={fadeIn}
+        >
           <div className="bg-green-500 w-1 h-10"></div>
           <h1 className="text-2xl md:text-4xl text-left font-bold lg:w-[60%] lg:leading-[52px]">
-            "FMT allowed me to make a living without leaving home"
+            "FindMyTutor allowed me to make a living without leaving home"
           </h1>
-        </div>
+        </motion.div>
 
-        <div className="w-full lg:w-[60%] flex gap-2 items-center px-5 lg:px-0">
-          <p className="text-lg font-semibold">Krista A. .</p>
-          <span className="font-normal">English tutor</span>
-        </div>
-        <div className="lg:w-[60%] lg:mt-10">
+        <motion.div
+          className="w-full lg:w-[60%] flex gap-2 items-center px-5 lg:px-0"
+          variants={fadeIn}
+        >
+          <p className="text-lg font-semibold"></p>
+          <span className="font-normal">Shittu Oluwaseun</span>
+        </motion.div>
+
+        <motion.div className="lg:w-[60%] lg:mt-10" variants={fadeIn}>
           <Button text="Create a tutor profile now" />
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 

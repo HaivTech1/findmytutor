@@ -6,7 +6,7 @@ const Button = ({ text }) => {
   const router = useRouter();
 
   const navigateToTutoReg = () => {
-    router.push("/tutorReg");
+    router.push("/register?mode=tutor");
   };
 
   return (
