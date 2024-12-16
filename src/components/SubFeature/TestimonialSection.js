@@ -13,7 +13,7 @@ const TestimonialSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { duration: 0.9, ease: "easeIn" },
     },
   };
 
@@ -54,7 +54,7 @@ const TestimonialSection = () => {
     >
       {/* Images Section */}
       <motion.div
-        className="w-[88%] lg:w-[90%] relative items-center justify-center"
+        className="w-[88%] lg:w-[100%] relative items-center justify-center"
         variants={fadeIn}
       >
         <SubFeaturesImage images={images} />

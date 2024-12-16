@@ -2,7 +2,7 @@ import Image, { StaticImageData } from "next/image";
 
 const SubFeaturesImage = ({ images }) => {
   return (
-    <div className="relative flex justify-center items-center lg:-top-24 -left-1 lg:left-44">
+    <div className="relative flex justify- items-center lg:-top-24 -left-1 lg:left-24">
       {images.map((image, index) => (
         <div key={index}>
           <Image
