@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Button from "../Button";
+
+import SubFeaturesImage from "./SubFeatureImage";
 import HeroImage1 from "../../../assets/SubTutorImg.jpg";
 import HeroImage2 from "../../../assets/SubTutorImg.jpg";
 import HeroImage3 from "../../../assets/SubTutorImg.jpg";
-import SubFeaturesImage from "./SubFeatureImage";
+import Button from "../Button";
 
 const TestimonialSection = () => {
   // Animation Variants
