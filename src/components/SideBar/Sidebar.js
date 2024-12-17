@@ -5,25 +5,27 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaTimes, FaUserAlt } from "react-icons/fa";
 import { MdLogin, MdLogout } from "react-icons/md";
+import logo from "../../../assets/logo.jpg";
 
 import { useStateProvider } from "@/context/StateContext";
 import { isLoggedIn } from "@/hooks/helpers";
 import { showSuccessToast } from "../CustomToast";
+import Image from "next/image";
 
 const Sidebar = ({ toggleSidebar }) => {
   const [{ userInfo }] = useStateProvider();
 
   const router = useRouter();
 
-   const handleLogout = async () => {
+  const handleLogout = async () => {
     Cookies.remove("access_token");
     await signOut();
     showSuccessToast("Session logged out successfully!");
     router.replace("/login");
-  }
+  };
 
   return (
-    <section className="bg-[#fff] text-primary h-full w-[250px] lg:w-[320px] border-r">
+    <section className="bg-[#fff] text-primary h-full w-[250px] lg:w-[320px] border-r overflow-y-hidden">
       <div className="flex flex-col h-full max-md:items-stretch w-full">
         <div>
           <div className="flex items-center justify-between m-2 border-b border-gray-300">
@@ -33,7 +35,10 @@ const Sidebar = ({ toggleSidebar }) => {
                   <div className="bg-gray-100">
                     <MdLogout className="border w-7 h-7 p-2" />
                   </div>
-                  <buttoon onClick={handleLogout} className="text-sm text-primary">
+                  <buttoon
+                    onClick={handleLogout}
+                    className="text-sm text-primary"
+                  >
                     Log out
                   </buttoon>
                 </div>
@@ -61,15 +66,20 @@ const Sidebar = ({ toggleSidebar }) => {
             </button>
           </div>
         </div>
-        <div className="flex flex-col items-start px-3 py-4 gap-8 font-semibold">
-          <Link href="/tutors" className="text-primary">
-            Find tutors
-          </Link>
-          <Link href="/contact" className="text-primary">
-            Contact Us
-          </Link>
-          <Link href="/login" className="text-primary">
-            Become a tutor
+        <div className="flex flex-col justify-between">
+          <div className="flex flex-col items-start px-3 py-4 gap-8 font-semibold">
+            <Link href="/tutors" className="text-primary">
+              Find tutors
+            </Link>
+            <Link href="/contact" className="text-primary">
+              Contact Us
+            </Link>
+            <Link href="/login" className="text-primary">
+              Become a tutor
+            </Link>
+          </div>
+          <Link href="/" className="-ml-6 mt-[19rem] border-b border-black">
+            <Image src={logo} alt="logo" className="w-28 h-28"/>
           </Link>
         </div>
       </div>
