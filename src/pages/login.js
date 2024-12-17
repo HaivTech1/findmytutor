@@ -16,7 +16,6 @@ import { sendError } from "@/hooks/helpers";
 import { PageSEO } from "@/hooks/SEO";
 import siteSettings from "@/hooks/siteSettings";
 import { UseAuth } from "@/hooks/UseAuth";
-import google from "../../assets/googles.svg";
 
 const Login = () => {
 
@@ -188,7 +187,6 @@ const Login = () => {
               onClick={signIn}
               className="w-full flex items-center justify-center font-semibold gap-2 py-2 px-4 border-2 border-black rounded-lg hover:bg-gray-100 transition"
             >
-              <Image src={google} alt="google" width={30} height={30} />
               <p>Continue with Google</p>
               {isLoadingGoogle && <LoaderIcon />}
             </button>
