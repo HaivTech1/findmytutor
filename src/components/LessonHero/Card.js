@@ -112,6 +112,7 @@ const Card = ({
           profile_picture={profile_picture}
           full_name={full_name}
           tutorId={id}
+          hourly_rate={hourly_rate}
         />
       )}
     </div>
