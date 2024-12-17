@@ -275,7 +275,7 @@ const Register = () => {
     const step1 = () => {
       return (
         <div>
-          <div className="my-4">
+          <div className="my-4"> 
             <h1 className="text-black text-sm font-bold">Account Details</h1>
             <p className="text-black text-xs">
               Plese make sure you provied accurate details about your self.
@@ -285,9 +285,10 @@ const Register = () => {
           <div className="flex items-center justify-center my-2">
             <img
               src={inputs?.profile_image?.imageUrl ?? profileImage}
-              className="w-20 h-20 rounded-full border-2 border-primary cursor-pointer"
+              className="w-20 h-20 rounded-full border-2 border-primary cursor-pointer bg-gray-400 opacity-15"
               ref={profileImage}
               onClick={handleProfileClick}
+             
             />
 
             <input
@@ -299,7 +300,7 @@ const Register = () => {
               ref={profile_image}
             />
           </div>
-          <p className="text-center text-sm font-bold mb-4">Select Profile Image</p>
+          <p className="text-center text-sm font-bold mb-4 text-primary">Select Profile Image</p>
 
           <div className="mb-2 sm:mb-4 relative">
             <TextInput
@@ -781,7 +782,7 @@ const Register = () => {
         description={siteSettings.description}
       />
 
-      <div className="flex items-center justify-center min-h-screen max-w-xl mx-auto">
+      <div className="flex items-center justify-center min-h-screen max-w-xl mx-auto text-primary">
         <div className="w-full p-8">
           <h1 className="text-2xl font-bold mb-1 sm:mb-4">Create {type} account</h1>
 

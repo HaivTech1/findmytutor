@@ -162,7 +162,7 @@ const Login = () => {
 
       <div className="flex items-center justify-center min-h-screen max-w-xl mx-auto">
         <div className="w-full  p-8">
-          <h1 className="text-2xl font-bold mb-4">Log in</h1>
+          <h1 className="text-2xl font-bold mb-4 text-primary">Log in</h1>
 
           {!mode && (
             <div className="text-start mb-4">
