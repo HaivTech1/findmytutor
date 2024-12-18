@@ -7,7 +7,7 @@ import {
   MdOutlineArrowBackIos,
 } from "react-icons/md";
 import Image from "next/image";
-import bg1 from "../../../assets/class.jpeg";
+import bg1 from "../../../assets/onlineClass.jpg";
 import StepSection from "../StepSection/StepSection";
 import { useRouter } from "next/navigation";
 import Link from "next/link";

@@ -5,7 +5,7 @@ import PaidImage from "../../../assets/PaidImage.jpg";
 
 const GetPaidSection = () => {
   return (
-    <section className="lg:border border-black w-full lg:w-[80%] mx-auto mt-10 lg:my-20 overflow-hidden">
+    <section className="lg:border border-black w-full lg:w-[80%] mx-auto mt-10 overflow-hidden">
       <div className="relative flex flex-col lg:flex-row items-center justify-between">
         {/* Left: Layered Image Section */}
         <div className="w-[100%] lg:w-[40%] h-96 flex items-center justify-center relative ">
