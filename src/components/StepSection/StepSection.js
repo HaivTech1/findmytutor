@@ -4,13 +4,13 @@ const stepsData = [
   {
     number: 1,
     title: "Sign up",
-    description: "to create your tutor profile",
+    description: "to create your tutor profile...",
     isActive: true, // Indicates the active step for styling
   },
   {
     number: 2,
     title: "Get approved",
-    description: "by our team in Five Working days",
+    description: "by our team in no time...",
     isActive: false,
   },
   {

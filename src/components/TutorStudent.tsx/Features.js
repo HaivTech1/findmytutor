@@ -1,11 +1,13 @@
 "use client";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import Button from "../Button";
+import Image from "next/image";
+
+import FeaturesImage from "./FeaturesImages";
+import siteSettings from "@/hooks/siteSettings";
 import HeroImage1 from "../../../assets/benefitAsset.jpg";
 import HeroImage2 from "../../../assets/benefitAsset.jpg";
 import HeroImage3 from "../../../assets/benefitAsset.jpg";
-import FeaturesImage from "./FeaturesImages";
+import Button from "../Button";
 
 const Features = () => {
   // Array of image paths for mapping
@@ -74,7 +76,7 @@ const Features = () => {
         </div>
 
         <p className="text-sm md:text-lg mb-6 lg:w-[70%] text-gray-600 leading-6">
-          FindMyTutors teach 800,000+ students globally. Join us and you’ll
+          {siteSettings.title} teach 800,000+ students globally. Join us and you’ll
           have everything you need to teach successfully.
         </p>
         <ul className="space-y-4 text-lg">

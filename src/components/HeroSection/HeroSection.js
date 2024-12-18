@@ -1,15 +1,14 @@
 "use client";
-
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import siteSettings from "@/hooks/siteSettings";
 import OverlappingImages from "./OverlappingImages";
 import HeroImage1 from "../../../assets/HeroImage.jpg";
 import HeroImage2 from "../../../assets/HeroImage.jpg";
 import HeroImage3 from "../../../assets/HeroImage.jpg";
 import Button from "../Button";
 import StepSection from "../StepSection/StepSection";
-import siteSettings from "@/hooks/siteSettings";
 
 const HeroSection = () => {
   const images = [
@@ -51,13 +50,13 @@ const HeroSection = () => {
           <div className="space-y-6">
             {/* Heading for lg screens */}
             <h1 className="text-2xl hidden lg:block lg:text-5xl font-bold text-black tracking-tighter">
-              Make a living by teaching the largest <br />
-              community of learners worldwide
+              Turn your expertise into income by teaching a global
+              community of eager learners.
             </h1>
             {/* Heading for small screens */}
             <h1 className="text-3xl lg:text-5xl px-3 lg:hidden font-bold text-black tracking-tighter">
-              Make a living by teaching the largest community of learners
-              worldwide
+              Turn your expertise into income by teaching a global community of
+              eager learners.
             </h1>
             {/* Steps */}
             <motion.div
