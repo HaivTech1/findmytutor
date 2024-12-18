@@ -1,3 +1,4 @@
+import Carousel from "@/components/Carousel/Carousel";
 import FAQ from "@/components/FAQ/Faq";
 import GetPaidSection from "@/components/GetPaidSection/GetPaidSection";
 import HeroSection from "@/components/HeroSection/HeroSection";
@@ -23,7 +24,8 @@ export default function Home() {
       />
 
       <section>
-        <HeroSection />
+        <Carousel/>
+        {/* <HeroSection /> */}
         <TutorStudent />
         <SubFeature />
         <FAQ />
