@@ -7,7 +7,7 @@ import {
   MdOutlineArrowBackIos,
 } from "react-icons/md";
 import Image from "next/image";
-import bg1 from "../../../assets/class.jpeg";
+import bg1 from "../../../assets/onlineClass.jpg";
 import StepSection from "../StepSection/StepSection";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -77,16 +77,12 @@ const Carousel = () => {
               variants={textAnimation}
               className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0"
             >
-              <h1 className="text-lg lg:text-2xl font-bold leading-tight text-gray-900 mb-1">
+              <h1 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight text-gray-900 mb-1">
                 Empower the world's largest community of learners while earning{" "}
                 <span className="text-purple-500">
                   a living through teaching
                 </span>
               </h1>
-              <p className="text-gray-600 text-sm md:text-lg lg:text-sm leading-loose pb-5 lg:pb-0 mt-4 lg:mt-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
 
               <StepSection />
 
@@ -138,16 +134,12 @@ const Carousel = () => {
               variants={textAnimation}
               className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0"
             >
-              <h1 className="text-lg lg:text-2xl font-bold leading-tight text-gray-900 mb-1">
+              <h1 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight text-gray-900 mb-1">
                 Empower the world's largest community of learners while earning{" "}
                 <span className="text-purple-500">
                   a living through teaching
                 </span>
               </h1>
-              <p className="text-gray-600 text-sm md:text-lg lg:text-sm  pb-5 lg:pb-0 leading-loose mt-4 lg:mt-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
 
               <StepSection />
 

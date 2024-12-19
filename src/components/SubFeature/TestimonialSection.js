@@ -2,9 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import SubFeaturesImage from "./SubFeatureImage";
-import HeroImage1 from "../../../assets/SubTutorImg.jpg";
-import HeroImage2 from "../../../assets/SubTutorImg.jpg";
-import HeroImage3 from "../../../assets/SubTutorImg.jpg";
+import HeroImage1 from "../../../assets/testimonial.jpg";
+import HeroImage2 from "../../../assets/testimonial.jpg";
+import HeroImage3 from "../../../assets/testimonial.jpg";
 import Button from "../Button";
 
 const TestimonialSection = () => {
@@ -90,7 +90,7 @@ const TestimonialSection = () => {
           variants={fadeIn}
         >
           <p className="text-lg font-semibold"></p>
-          <span className="font-normal">Shittu Oluwaseun</span>
+          <span className="font-normal">Frank Joe</span>
         </motion.div>
 
         <motion.div className="lg:w-[60%] lg:mt-10" variants={fadeIn}>

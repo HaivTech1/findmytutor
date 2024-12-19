@@ -4,13 +4,13 @@ const stepsData = [
   {
     number: 1,
     title: "Sign up",
-    description: "to create your tutor profile...",
+    description: "to create your tutor profile",
     isActive: true, // Indicates the active step for styling
   },
   {
     number: 2,
     title: "Get approved",
-    description: "by our team in no time...",
+    description: "by our team in no time",
     isActive: false,
   },
   {
@@ -48,13 +48,13 @@ const StepSection = () => {
       </div>
 
       {/* Responsive Vertical Layout for Small Screens */}
-      <div className="md:hidden flex flex-col items-start w-full px-3">
+      <div className="md:hidden flex flex-col items-start w-full px-3 mt-8">
         {stepsData.map((step, index) => (
           <React.Fragment key={step.number}>
             {/* Step Circle */}
             <div className="flex items-center gap-4">
               <div
-                className={`flex items-center justify-center w-10 h-10 text-lg font-bold rounded ${
+                className={`flex items-center  justify-center w-10 h-10 text-lg font-bold rounded ${
                   step.isActive
                     ? "bg-black text-white"
                     : "bg-gray-200 text-gray-900"
@@ -80,10 +80,10 @@ const StepSection = () => {
       </div>
 
       {/* Horizontal Text Content for Large Screens */}
-      <div className="hidden md:flex justify-between w-[94%] mt-6">
+      <div className="hidden md:flex justify-between items-center gap-5 w-[100%] mt-6">
         {stepsData.map((step) => (
           <div key={step.number} className="flex flex-col text-start px-3 lg:px-0">
-            <h3 className="text-2xl font-semibold text-black">
+            <h3 className="text-xl lg:text-2xl font-semibold text-black">
               {step.title}
             </h3>
             <p className="mt-1 text-sm text-[#222]">{step.description}</p>

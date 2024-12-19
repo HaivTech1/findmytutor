@@ -4,9 +4,9 @@ import Image from "next/image";
 
 import siteSettings from "@/hooks/siteSettings";
 import OverlappingImages from "./OverlappingImages";
-import HeroImage1 from "../../../assets/HeroImage.jpg";
-import HeroImage2 from "../../../assets/HeroImage.jpg";
-import HeroImage3 from "../../../assets/HeroImage.jpg";
+import HeroImage1 from "../../../assets/testimonial.jpg";
+import HeroImage2 from "../../../assets/testimonial.jpg";
+import testimonial3 from "../../../assets/testimonial.jpg";
 import Button from "../Button";
 import StepSection from "../StepSection/StepSection";
 

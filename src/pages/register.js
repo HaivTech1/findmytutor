@@ -17,7 +17,7 @@ import { sendError, ValidateInput } from '@/hooks/helpers';
 import { PageSEO } from '@/hooks/SEO';
 import siteSettings from '@/hooks/siteSettings';
 import { UseAuth } from '@/hooks/UseAuth';
-import profileImage from "../../assets/SubTutorImg.jpg";
+import profileImage from "../../assets/testimonial.jpg";
 
 const Register = () => {
 
