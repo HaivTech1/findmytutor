@@ -30,7 +30,7 @@ const TestimonialSection = () => {
       src: HeroImage1,
       alt: "Tutor smiling 1",
       className:
-        "absolute w-28 h-40 sm:w-32 sm:h-32 md:w-40 md:h-52 left-1 sm:left-4 md:left-0 lg:-left-20 xl:left-0 top-[-6px] sm:top-[-12px] md:top-[-24px]",
+        "absolute w-28 h-40 sm:w-32 sm:h-32 md:w-40 md:h-52 left-1 sm:left-4 md:left-0 lg:-left-20 xl:left-96 top-[-6px] sm:top-[-12px] md:top-[-24px]",
     },
     {
       src: HeroImage2,

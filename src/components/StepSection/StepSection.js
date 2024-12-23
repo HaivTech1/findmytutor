@@ -23,7 +23,7 @@ const stepsData = [
 
 const StepSection = () => {
   return (
-    <div className="flex flex-col w-full max-w-4xl mx-auto lg:my-10">
+    <div className="flex flex-col w-full max-w-4xl mx-auto lg:my-10 md:hidden lg:block">
       {/* Numbers and Lines */}
       <div className="hidden md:flex items-center w-[70%] mx-3 lg:mx-0">
         {stepsData.map((step, index) => (

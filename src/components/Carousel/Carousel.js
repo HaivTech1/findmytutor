@@ -75,9 +75,9 @@ const Carousel = () => {
               initial="hidden"
               animate="visible"
               variants={textAnimation}
-              className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0"
+              className="lg:w-1/2 text-center md:text-left mb-8 lg:mb-0"
             >
-              <h1 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight text-gray-900 mb-1">
+              <h1 className="text-lg md:text-xl lg:text-2xl md:w-[90%] lg:w-full font-bold leading-tight text-gray-900 mb-1">
                 Empower the world's largest community of learners while earning{" "}
                 <span className="text-purple-500">
                   a living through teaching
@@ -115,7 +115,7 @@ const Carousel = () => {
               <Image
                 src={bg1}
                 alt="AI Placeholder Illustration"
-                className="w-full max-w-md lg:max-w-xl"
+                className="w-full max-w-md "
               />
             </motion.div>
           </section>
@@ -132,9 +132,9 @@ const Carousel = () => {
               initial="hidden"
               animate="visible"
               variants={textAnimation}
-              className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0"
+              className="lg:w-1/2 text-center md:text-left mb-8 lg:mb-0"
             >
-              <h1 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight text-gray-900 mb-1">
+              <h1 className="text-lg md:text-xl lg:text-2xl md:w-[90%] lg:w-full font-bold leading-tight text-gray-900 mb-1">
                 Empower the world's largest community of learners while earning{" "}
                 <span className="text-purple-500">
                   a living through teaching
@@ -172,7 +172,7 @@ const Carousel = () => {
               <Image
                 src={bg1}
                 alt="AI Placeholder Illustration"
-                className="w-full max-w-md lg:max-w-xl"
+                className="w-full max-w-md "
               />
             </motion.div>
           </section>
