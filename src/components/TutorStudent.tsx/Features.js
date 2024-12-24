@@ -42,7 +42,7 @@ const Features = () => {
         <div className="flex  justify-center items-center gap-2 mb-10">
           <div className="bg-[#158f78] w-1 h-10 lg:hidden xl:block"></div>
           <h1 className="text-2xl lg:text-5xl font-bold lg:w-[70%] text-primary ">
-            Teach students from over 180 countries
+          Teach students across all the states
           </h1>
         </div>
       
@@ -60,7 +60,7 @@ const Features = () => {
                 transition: { duration: 0.5, delay: index * 0.2 },
               },
             }}
-            className="bg-white shadow-md p-6 rounded-lg flex flex-col items-center text-center border border-black"
+            className="bg-gray-100 bg-opacity-20 shadow-md p-6 rounded-lg flex flex-col items-center text-center border border-black"
           >
             <div className="w-20 h-20 mb-4 text-primary">
               <Image

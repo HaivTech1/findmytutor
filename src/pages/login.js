@@ -187,7 +187,7 @@ const Login = () => {
               onClick={signIn}
               className="w-full flex items-center justify-center font-semibold gap-2 py-2 px-4 border-2 border-black rounded-lg hover:bg-gray-100 transition"
             >
-              <p>Continue with Google</p>
+              <p className="text-primary">Continue with Google</p>
               {isLoadingGoogle && <LoaderIcon />}
             </button>
           </div>

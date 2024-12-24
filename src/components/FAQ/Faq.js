@@ -159,7 +159,7 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="w-full md:w-[90%] xl:max-w-3xl mx-auto my-8 p-4 text-black"
+      className="w-full md:w-[90%] xl:w-[82%] mx-auto my-8 p-4 text-black"
     >
       <h2 className="text-2xl xl:text-5xl font-bold mb-6">
         Frequently Asked Questions

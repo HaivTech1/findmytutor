@@ -67,7 +67,7 @@ const Carousel = () => {
   const slides = [
     {
       id: 1,
-      content: (
+     content: (
         <div className="relative w-full h-full mt-5 lg:mt-0">
           <section className="flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 bg-white">
             {/* Left Section */}
