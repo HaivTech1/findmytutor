@@ -91,7 +91,7 @@ const Carousel = () => {
                 </span>
               </h1>
 
-              <p className="text-sm  tracking-wider leading-6 md:w-[85%] lg:w-[80%] text-gray-400 mt-2">
+              <p className="text-sm  tracking-wider leading-6 md:w-[85%] lg:w-[80%] text-gray-500 mt-2">
                 Join a thriving community of educators passionate about sharing
                 knowledge and empowering learners. Transform lives through your
                 expertise while enjoying the flexibility and fulfillment of
@@ -158,7 +158,7 @@ const Carousel = () => {
                   />
                 </span>
               </h1>
-              <p className="text-sm  leading-6 tracking-wider md:w-[85%] lg:w-[80%] text-gray-400 mt-2">
+              <p className="text-sm leading-6 tracking-wider md:w-[85%] lg:w-[80%] text-gray-500 mt-2">
                 Join a thriving community of educators passionate about sharing
                 knowledge and empowering learners. Transform lives through your
                 expertise while enjoying the flexibility and fulfillment of
