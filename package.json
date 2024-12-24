@@ -27,7 +27,8 @@
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
     "swr": "^2.2.5",
-    "terser-webpack-plugin": "^5.3.10"
+    "terser-webpack-plugin": "^5.3.10",
+    "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

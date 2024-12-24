@@ -11,6 +11,7 @@ import bg1 from "../../../assets/onlineClass.jpg";
 import StepSection from "../StepSection/StepSection";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Typewriter from "typewriter-effect";
 
 const NextArrow = ({ onClick }) => (
   <button
@@ -67,7 +68,7 @@ const Carousel = () => {
   const slides = [
     {
       id: 1,
-     content: (
+      content: (
         <div className="relative w-full h-full mt-5 lg:mt-0">
           <section className="flex flex-col lg:flex-row items-center justify-between px-6 lg:px-20 bg-white">
             {/* Left Section */}
@@ -79,12 +80,23 @@ const Carousel = () => {
             >
               <h1 className="text-lg md:text-xl lg:text-2xl md:w-[90%] lg:w-full font-bold leading-tight text-gray-900 mb-1">
                 Empower the world's largest community of learners while earning{" "}
-                <span className="text-purple-500">
-                  a living through teaching
+                <span className="text-purple-500 inline-block">
+                  <Typewriter
+                    options={{
+                      strings: ["a living through teaching"],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
                 </span>
               </h1>
 
-              <StepSection />
+              <p className="text-sm  tracking-wider leading-6 md:w-[85%] lg:w-[80%] text-gray-400 mt-2">
+                Join a thriving community of educators passionate about sharing
+                knowledge and empowering learners. Transform lives through your
+                expertise while enjoying the flexibility and fulfillment of
+                teaching on your own terms.
+              </p>
 
               <motion.div
                 variants={buttonAnimation}
@@ -136,12 +148,22 @@ const Carousel = () => {
             >
               <h1 className="text-lg md:text-xl lg:text-2xl md:w-[90%] lg:w-full font-bold leading-tight text-gray-900 mb-1">
                 Empower the world's largest community of learners while earning{" "}
-                <span className="text-purple-500">
-                  a living through teaching
+                <span className="text-purple-500 inline-block">
+                  <Typewriter
+                    options={{
+                      strings: ["a living through teaching"],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
                 </span>
               </h1>
-
-              <StepSection />
+              <p className="text-sm  leading-6 tracking-wider md:w-[85%] lg:w-[80%] text-gray-400 mt-2">
+                Join a thriving community of educators passionate about sharing
+                knowledge and empowering learners. Transform lives through your
+                expertise while enjoying the flexibility and fulfillment of
+                teaching on your own terms.
+              </p>
 
               <motion.div
                 variants={buttonAnimation}
