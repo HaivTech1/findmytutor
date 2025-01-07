@@ -43,7 +43,6 @@ const Index = () => {
         })
         .catch((error) => {
           const errorMessage = sendError(error);
-          console.log(errorMessage);
           clearTimeout(timeout);
           setLoading(false);
         });
@@ -92,14 +91,14 @@ const Index = () => {
         description={siteSettings.description}
       />
       <div className="bg-white min-h-screen p-2 text-black">
-        <h2 className="text-3xl text-center pt-4">
+        <h2 className="text-lg sm:text-3xl text-center pt-4">
           Meet With Our Professional Teachers
         </h2>
         <div className="bg-primary h-1 w-20 mx-auto mb-4"></div>
 
         {/* Filters Component */}
         <p className="text-sm lg:w-[70%] mx-auto text-orange-700 font-semibold p-3 flex items-center gap-2">
-          Filter By
+          Search Specific Tutors
           <FaArrowRight />
         </p>
         <Filters filters={filters} onFilterChange={handleFilterChange} />

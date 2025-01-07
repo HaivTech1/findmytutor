@@ -11,10 +11,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "#090927",
-        secondary: "#090910",
+        secondary: "#10B6FA",
       },
     },
   },
-  darkMode: 'media', 
+  darkMode: "media",
   plugins: [],
 };

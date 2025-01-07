@@ -25,7 +25,7 @@ const GetPaidSection = () => {
               src={PaidImage}
               alt="Layer 1"
               layout="fill"
-              className="rounded-lg"
+              className="rounded-lg object-fill"
             />
           </div>
 
@@ -36,29 +36,31 @@ const GetPaidSection = () => {
         </div>
 
         {/* Right: Content Section for large screen*/}
-        <div className="w-full hidden lg:block lg:w-[55%] h-96 bg-primary p-6 lg:p-10 flex-col justify-center rounded-lg">
-          <h2 className="text-2xl lg:text-6xl tracking-tighter font-bold text-white mb-4">
-            Get paid to <br /> teach online
-          </h2>
-          <p className="text-white text-lg lg:text-lg mb-6">
-            Connect with thousands of learners around the world and teach from
-            your living room.
-          </p>
-          <button className="bg-black text-white py-3 px-6 rounded-lg text-lg hover:bg-gray-800 transition">
-            Create a tutor profile now
-          </button>
+        <div className="w-full hidden lg:block lg:w-[55%] h-96 bg-primary p-6 lg:p-10 flex-col justify-center items-center rounded-lg">
+          <div className="mx-4 mt-6">
+            <h2 className="text-2xl lg:text-4xl tracking-tighter font-bold text-white mb-4">
+              Get paid to teach online
+            </h2>
+            <p className="text-white text-lg lg:text-lg mb-6">
+              Connect with thousands of learners around the world and teach from
+              your living room.
+            </p>
+            <button className="bg-secondary text-white py-3 px-6 rounded-lg text-lg hover:bg-secondary/20 transition">
+              Create a tutor profile now
+            </button>
+          </div>
         </div>
 
         {/* Right: Content Section for small screen*/}
         <div className="w-full lg:hidden bg-primary p-6 lg:p-10 flex-col justify-center">
-          <h2 className="text-3xl tracking-tighter font-bold text-white mb-4">
+          <h2 className="text-2xl tracking-tighter font-bold text-white mb-1">
             Get paid to teach online
           </h2>
-          <p className="text-white text-lg lg:text-lg mb-6">
+          <p className="text-white text-sm lg:text-lg mb-6">
             Connect with thousands of learners around the world and teach from
             your living room.
           </p>
-          <button className="bg-black text-white py-3 px-12 rounded-lg text-lg hover:bg-gray-800 transition">
+          <button className="bg-secondary text-white py-3 px-6 sm:px-12 rounded-lg text-lg hover:bg-gray-800 transition">
             Create a tutor profile now
           </button>
         </div>

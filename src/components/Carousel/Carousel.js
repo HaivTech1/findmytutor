@@ -1,17 +1,19 @@
-import Slider from "react-slick";
 import { motion } from "framer-motion";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   MdOutlineArrowForwardIos,
   MdOutlineArrowBackIos,
 } from "react-icons/md";
-import Image from "next/image";
-import bg1 from "../../../assets/onlineClass.jpg";
-import StepSection from "../StepSection/StepSection";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import Slider from "react-slick";
 import Typewriter from "typewriter-effect";
+
+import bg1 from "../../../assets/online.png";
+import StepSection from "../StepSection/StepSection";
+
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const NextArrow = ({ onClick }) => (
   <button
@@ -79,11 +81,11 @@ const Carousel = () => {
               className="lg:w-1/2 text-center md:text-left mb-8 lg:mb-0"
             >
               <h1 className="text-lg md:text-xl lg:text-2xl md:w-[90%] lg:w-full font-bold leading-tight text-gray-900 mb-1">
-                Empower the world's largest community of learners while earning{" "}
-                <span className="text-purple-500 inline-block">
+                Earn by empowering learners globally.{" "}
+                <span className="text-secondary inline-block">
                   <Typewriter
                     options={{
-                      strings: ["a living through teaching"],
+                      strings: ["Teach and earn"],
                       autoStart: true,
                       loop: true,
                     }}
@@ -91,11 +93,9 @@ const Carousel = () => {
                 </span>
               </h1>
 
-              <p className="text-sm  tracking-wider leading-6 md:w-[85%] lg:w-[80%] text-gray-500 mt-2">
-                Join a thriving community of educators passionate about sharing
-                knowledge and empowering learners. Transform lives through your
-                expertise while enjoying the flexibility and fulfillment of
-                teaching on your own terms.
+              <p className="text-sm tracking-wider leading-6 md:w-[85%] lg:w-[80%] text-gray-500 mt-2">
+                Join a vibrant community of educators sharing knowledge,
+                empowering learners, and transforming lives—all on your terms.
               </p>
 
               <motion.div
@@ -147,11 +147,11 @@ const Carousel = () => {
               className="lg:w-1/2 text-center md:text-left mb-8 lg:mb-0"
             >
               <h1 className="text-lg md:text-xl lg:text-2xl md:w-[90%] lg:w-full font-bold leading-tight text-gray-900 mb-1">
-                Empower the world's largest community of learners while earning{" "}
-                <span className="text-purple-500 inline-block">
+                Earn by empowering learners globally.{" "}
+                <span className="text-secondary inline-block">
                   <Typewriter
                     options={{
-                      strings: ["a living through teaching"],
+                      strings: ["Teach and earn"],
                       autoStart: true,
                       loop: true,
                     }}
@@ -159,10 +159,8 @@ const Carousel = () => {
                 </span>
               </h1>
               <p className="text-sm leading-6 tracking-wider md:w-[85%] lg:w-[80%] text-gray-500 mt-2">
-                Join a thriving community of educators passionate about sharing
-                knowledge and empowering learners. Transform lives through your
-                expertise while enjoying the flexibility and fulfillment of
-                teaching on your own terms.
+                Join a vibrant community of educators sharing knowledge,
+                empowering learners, and transforming lives—all on your terms.
               </p>
 
               <motion.div

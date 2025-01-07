@@ -30,7 +30,7 @@ const Card = ({
   };
   return (
     <div className="relative border w-full border-black text-black rounded-md p-4 grid grid-cols-1 gap-1 md:flex md:justify-between">
-      <div className="flex flex-col lg:flex-row gap-3">
+      <div className="flex flex-col lg:flex-row gap-3 w-full sm:w-[80%]">
         <img
           src={profile_picture}
           alt={`${full_name}'s profile`}
@@ -41,22 +41,26 @@ const Card = ({
           <div>
             <h3 className="text-lg font-bold">{full_name}</h3>
             <p className="text-sm text-gray-600 flex gap-2 items-center">
-              <FaLocationArrow className="w-3 h-3 text-[#19549d]" />
+              <span className="text-[13px] text-[#19549d] font-semibold">
+                State:
+              </span>
               <span className="text-xs">{state}</span>
             </p>
             <p className="text-sm text-gray-600 flex gap-2 items-center">
-              <FaGraduationCap className="w-4 h-4 text-[#19549d]" />
-              <span className="text-xs"> {subjects}</span>
+              <span className="text-[13px] text-[#19549d] font-semibold">
+                Subjects:
+              </span>
+              <span className="text-xs"> {subjects.join(", ")}</span>
             </p>
 
             <p className="text-gray-600 w-[60%]">
-              <span className="text-[15px] text-[#19549d] font-semibold">
+              <span className="text-[13px] text-[#19549d] font-semibold">
                 Certificate:{" "}
               </span>
               <span className="text-xs">{qualifications}</span>
             </p>
             <p className="text-gray-600 lg:w-[50%]">
-              <span className="text-[15px] text-[#19549d] font-semibold">
+              <span className="text-[13px] text-[#19549d] font-semibold">
                 Bio:{" "}
               </span>
               <span className="text-xs">
@@ -71,27 +75,30 @@ const Card = ({
             </p>
 
             <p className="mt-2">
-              <span className="text-[15px] text-[#19549d] font-semibold">
+              <span className="text-[13px] text-[#19549d] font-semibold">
                 Experience:{" "}
               </span>
-              <strong text-xs>{experience_years} years of experience</strong>
+              <span className="text-xs">
+                {experience_years} years of experience
+              </span>
             </p>
           </div>
         </div>
       </div>
 
       {/*button toggle */}
-      <div className="flex flex-col justify-between gap-4 mr-">
+      <div className="flex flex-col justify-between gap-4 ">
         <div className="">
-          <p className="text-black font-bold">
-            {" "}
-            <span className="text-sm font-semibold">Payment:</span>{" "}
-            {siteSettings.currency}
-            {hourly_rate}
-            /hr
+          <p className="text-black text-sm font-bold">
+            <span className="font-semibold">Payment:</span>{" "}
+            <span className="text-red-500">
+              {siteSettings.currency}
+              {hourly_rate}
+              /hr
+            </span>
           </p>
-          <h4 className="text-sm font-semibold">Availability:</h4>
-          <ul className="list-disc list-inside text-sm text-gray-600">
+          <h4 className="text-sm font-semibold underline">Teaching Hours:</h4>
+          <ul className="list-disc list-inside text-xs text-gray-600">
             {Object.entries(availability_schedule).map(([day, time]) => (
               <li key={day}>{time}</li>
             ))}
@@ -102,7 +109,7 @@ const Card = ({
             onClick={toggleBookingModal}
             className="bg-primary text-white px-2 py-2 rounded-lg"
           >
-            Book A Session 
+            Book A Session
           </button>
         </div>
       </div>

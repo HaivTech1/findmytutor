@@ -2,7 +2,6 @@
 // import { useState } from "react";
 // import Link from "next/link";
 // import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-
 // const faqData = [
 //   {
 //     question: "What kind of tutors does FindMyTutor look for?",
@@ -45,14 +44,11 @@
 //       "Most popular tutors on FindMyTutor earn up to $550 a week. Your earnings depend on the hourly rate you set, the number of lessons you teach and how many students continue learning with you after the trial lesson. A tip for newly registered tutors: start with a lower hourly rate to get first students faster. You can change your rate anytime.FindMyTutor takes a commission fee from your lessons to bring in more students from around the globe, and develop an easy-to-use video tool and learning materials for your lessons. We provide free professional development webinars and multilingual customer support to guide you along every step of your tutoring journey.The commission for every trial lesson with a new student is 100%. For all subsequent lessons, the commission starts at 33% and decreases to 18% based on how many hours you’ve taught on the platform.",
 //   },
 // ];
-
 // const FAQ = () => {
 //   const [openIndex, setOpenIndex] = useState(null);
-
 //   const toggleFAQ = (index) => {
 //     setOpenIndex(openIndex === index ? null : index);
 //   };
-
 //   return (
 //     <section id="faq" className="w-full md:w-[90%] xl:max-w-3xl mx-auto my-8 p-4 text-black">
 //       <h2 className="text-2xl xl:text-5xl font-bold mb-6">
@@ -95,15 +91,13 @@
 //     </section>
 //   );
 // };
-
 // export default FAQ;
-
-
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { motion } from "framer-motion";
+
 import siteSettings from "@/hooks/siteSettings";
 
 const faqData = [
@@ -159,41 +153,48 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="w-full md:w-[90%] xl:w-[82%] mx-auto my-8 p-4 text-black"
+      className="w-full md:w-[90%] xl:w-[85%] mx-auto my-8 py-10 px-6 text-black bg-secondary/5 rounded-lg"
     >
-      <h2 className="text-2xl xl:text-5xl font-bold mb-6">
+      <h2 className="text-lg xl:text-2xl font-bold">
         Frequently Asked Questions
       </h2>
-      {faqData.map((item, index) => (
-        <div key={index} className="border-b py-4">
-          <button
-            onClick={() => toggleFAQ(index)}
-            className="w-full text-left text-sm font-semibold flex justify-between items-center"
-          >
-            {item.question}
-            <span className="text-xl">
-              {openIndex === index ? (
-                <MdKeyboardArrowUp />
-              ) : (
-                <MdKeyboardArrowDown />
-              )}
-            </span>
-          </button>
-          {openIndex === index && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
+      <p className="text-xs">
+        Quick answers to all the questions you need answered.
+      </p>
+
+      <div className="mt-6 border border-primary py-3 px-4 rounded-lg">
+        {faqData.map((item, index) => (
+          <div key={index} className="border-b py-4">
+            <button
+              onClick={() => toggleFAQ(index)}
+              className="w-full text-left text-sm font-semibold flex justify-between items-center"
             >
-              <p className="mt-2 text-sm text-black whitespace-pre-line leading-6">
-                {item.answer}
-              </p>
-            </motion.div>
-          )}
-        </div>
-      ))}
+              {item.question}
+              <span className="text-xl">
+                {openIndex === index ? (
+                  <MdKeyboardArrowUp />
+                ) : (
+                  <MdKeyboardArrowDown />
+                )}
+              </span>
+            </button>
+            {openIndex === index && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <p className="mt-2 text-xs text-black whitespace-pre-line leading-6">
+                  {item.answer}
+                </p>
+              </motion.div>
+            )}
+          </div>
+        ))}
+      </div>
+
       <div className="md:flex items-start gap-2 py-10 text-sm leading-7">
         <span className="text-gray-500">Have more questions?</span>{" "}
         <Link href="#" className="underline hover:text-red-500">

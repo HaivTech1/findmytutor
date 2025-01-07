@@ -66,6 +66,7 @@ module.exports = withBundleAnalyzer({
     remotePatterns: [
       {
         hostname: "findmytutor.haivtech.com.ng",
+        hostname: "ui-avatars.com",
       },
     ],
   },

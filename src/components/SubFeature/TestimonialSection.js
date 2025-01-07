@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 import SubFeaturesImage from "./SubFeatureImage";
+import teacher from "../../../assets/14713.jpg";
 import HeroImage1 from "../../../assets/testimonial.jpg";
 import HeroImage2 from "../../../assets/testimonial.jpg";
 import HeroImage3 from "../../../assets/testimonial.jpg";
@@ -48,7 +50,7 @@ const TestimonialSection = () => {
 
   return (
     <motion.div
-      className="text-primary w-full xl:w-[80%] mx-auto flex flex-col lg:flex-row xl:justify-center items-center gap-44 xl:gap-16 mt-16 md:mt-24 lg:mt-0 mb-10 lg:mb-40"
+      className="text-primary w-full sm:max-w-[85%] mx-auto flex flex-col lg:flex-row xl:justify-center items-center gap-6 xl:gap-2 mt-10 sm:mt-14 lg:mb-5"
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
@@ -58,20 +60,24 @@ const TestimonialSection = () => {
         className="w-[88%] lg:w-[100%] relative items-center justify-center"
         variants={fadeIn}
       >
-        <SubFeaturesImage images={images} />
+        <Image
+          src={teacher}
+          alt="Teacher testimony"
+          className="w-full max-w-md "
+        />
       </motion.div>
 
       {/* Text Section */}
       <motion.div
-        className="flex flex-col gap-5 justify-center items-center mt-16 md:mt-40 lg:-mt-10"
+        className="flex flex-col gap-5 sm:gap-2 justify-center items-start"
         variants={fadeIn}
       >
         {/* Large screen size */}
         <motion.h2
-          className="text-2xl hidden lg:block lg:text-5xl text-left font-bold w-[90%] lg:w-[70%] xl:w-[60%] lg:leading-[52px]"
+          className="text-lg hidden lg:block lg:text-3xl text-start font-bold w-[90%] lg:w-[70%] xl:w-[100%]"
           variants={fadeIn}
         >
-          "FindMyTutor allowed me to make a living without leaving home!"
+          "FindMyTutor allows me to make a living without leaving home!"
         </motion.h2>
 
         {/* Small screen size */}
@@ -79,21 +85,21 @@ const TestimonialSection = () => {
           className="flex lg:hidden items-center gap-2 w-[95%] mx-auto"
           variants={fadeIn}
         >
-          <div className="bg-green-500 w-1 h-10"></div>
-          <h1 className="text-2xl md:text-4xl text-left font-bold lg:w-[60%] lg:leading-[52px]">
-            "FindMyTutor allowed me to make a living without leaving home"
+          <div className="bg-secondary w-1 h-10"></div>
+          <h1 className="text-2xl md:text-4xl text-left font-bold lg:w-[100%] lg:leading-[52px]">
+            "FindMyTutor allows me to make a living without leaving home"
           </h1>
         </motion.div>
 
         <motion.div
-          className="w-full lg:w-[60%] flex gap-2 items-center px-5 lg:px-0"
+          className="w-full flex gap-2 px-5 lg:px-0"
           variants={fadeIn}
         >
           <p className="text-lg font-semibold"></p>
-          <span className="font-normal">Frank Joe</span>
+          <span className="font-normal">Shittu Oluwaseun O.</span>
         </motion.div>
 
-        <motion.div className="lg:w-[60%] lg:mt-10" variants={fadeIn}>
+        <motion.div className="lg:mt-4" variants={fadeIn}>
           <Button text="Create a tutor profile now" />
         </motion.div>
       </motion.div>
