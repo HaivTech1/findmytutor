@@ -28,8 +28,8 @@ const Footer = () => {
           <h2 className="text-lg font-semibold mb-3">About Us</h2>
           <p className="text-sm">
             {isExpanded
-              ? "FindMyTutor is an innovative online tutoring platform designed to connect students with expert tutors for personalized learning experiences. Our platform offers a range of services, including one-on-one tutoring, group classes, exam preparation, and skill-based courses. With a focus on quality education, FindMyTutor leverages advanced technology to provide adaptive learning, progress tracking, and secure tutor-student interactions. Our mission is to make high-quality tutoring accessible and affordable for students across Nigeria, empowering them to achieve academic excellence and develop lifelong skills"
-              : "FindMyTutor is an innovative online tutoring platform designed to connect students with expert tutors for personalized learning experiences..."}
+              ? "FindMyTutor is an innovative EdTech solution designed to provide personalized learning experiences by connecting students with qualified tutors. Our solution is a mobile application, starting with a web app, that will serve as the platform where students can access qualified tutors, and tutors can register to offer their services and expertise."
+              : "FindMyTutor is an innovative EdTech solution designed to provide personalized learning experiences by connecting students with qualified tutors."}
             <button
               onClick={handleToggle}
               className="text-[#21caab] hover:underline ml-2"
