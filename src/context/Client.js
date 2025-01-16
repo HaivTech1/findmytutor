@@ -8,7 +8,7 @@ export default function Client(context = null) {
     : Cookies.get("access_token");
 
   const clientInstance = axios.create({
-    baseURL: process.env.LIVE_BASE_URL,
+    baseURL: "https://findmytutor.haivtech.com.ng/api/v1",
     headers: accessToken ? { authorization: `Bearer ${accessToken}` } : {},
   });
 
