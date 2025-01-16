@@ -4,7 +4,7 @@ const siteSettings = {
   author: "HaivTech",
   headerTitle: "",
   description: "Providing you with services that makes you smile.",
-  address: "Ibadan Oyo State, Nigeria",
+  address: "21, Ajanaku street, Off Salvation Road, Opebi, Lagos",
   currency: "₦",
   language: "en-us",
   theme: "system", // system, dark or light
@@ -12,7 +12,7 @@ const siteSettings = {
   siteLogoColor: "/logocolor.png",
   image: "/logo.png",
   email: "noreply@findmytutor.com.ng",
-  phone_number: "09066100815",
+  phone_number: "+2347040274364",
   github: "https://github.com/HiveTech1/findmytutor",
   twitter: "https://twitter.com/findmytutor",
   linkedin: "https://www.linkedin.com/in/findmytutor/",

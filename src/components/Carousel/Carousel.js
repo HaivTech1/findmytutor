@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import Typewriter from "typewriter-effect";
 
 import bg1 from "../../../assets/online.png";
+import bg2 from "../../../assets/online2.png";
 import StepSection from "../StepSection/StepSection";
 
 import "slick-carousel/slick/slick-theme.css";
@@ -65,6 +66,10 @@ const Carousel = () => {
 
   const navigateToTutoReg = () => {
     router.push("/register?mode=tutor");
+  };
+
+  const navigateToStudentReg = () => {
+    router.push("/register?mode=student");
   };
 
   const slides = [
@@ -147,11 +152,11 @@ const Carousel = () => {
               className="lg:w-1/2 text-center md:text-left mb-8 lg:mb-0"
             >
               <h1 className="text-lg md:text-xl lg:text-2xl md:w-[90%] lg:w-full font-bold leading-tight text-gray-900 mb-1">
-                Earn by empowering learners globally.{" "}
+                Unlock Your Potential and Learn from the Best.{" "}
                 <span className="text-secondary inline-block">
                   <Typewriter
                     options={{
-                      strings: ["Teach and earn"],
+                      strings: ["Learn and grow"],
                       autoStart: true,
                       loop: true,
                     }}
@@ -159,8 +164,8 @@ const Carousel = () => {
                 </span>
               </h1>
               <p className="text-sm leading-6 tracking-wider md:w-[85%] lg:w-[80%] text-gray-500 mt-2">
-                Join a vibrant community of educators sharing knowledge,
-                empowering learners, and transforming lives—all on your terms.
+                Join a thriving community of learners gaining knowledge,
+                achieving goals, and shaping their future—one step at a time.
               </p>
 
               <motion.div
@@ -168,16 +173,16 @@ const Carousel = () => {
                 className="flex flex-col md:flex-row items-center justify-start gap-4 mt-10 lg:mt-14"
               >
                 <Link
-                  href="/tutors"
+                  href="/register?mode=student"
                   className="bg-primary text-white font-bold py-2 px-6 rounded transition"
                 >
-                  Find Tutor
+                  Become A Student
                 </Link>
                 <button
-                  onClick={navigateToTutoReg}
+                  onClick={navigateToStudentReg}
                   className="border-2 border-primary text-gray-900 font-bold py-2 px-6 rounded transition ease-out"
                 >
-                  Create A Tutor Profile
+                  Create A Student Profile
                 </button>
               </motion.div>
             </motion.div>
@@ -190,7 +195,7 @@ const Carousel = () => {
               className="hidden md:w-1/2 lg:flex justify-center"
             >
               <Image
-                src={bg1}
+                src={bg2}
                 alt="AI Placeholder Illustration"
                 className="w-full max-w-md "
               />

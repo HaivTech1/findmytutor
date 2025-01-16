@@ -155,7 +155,7 @@ const Login = () => {
   return (
     <Mainlayout>
       <PageSEO
-        title={`Loign to ypur ${type} account`}
+        title={`Login to your ${type} account`}
         description={siteSettings.description}
       />
 
